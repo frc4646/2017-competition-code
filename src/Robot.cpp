@@ -13,9 +13,12 @@
 class Robot: public frc::IterativeRobot {
 public:
 	void RobotInit() override {
+		CommandBase::init();
+
 		chooser.AddDefault("Default Auto", new ExampleCommand());
 		// chooser.AddObject("My Auto", new MyAutoCommand());
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
+		frc::SmartDashboard::PutData(frc::Scheduler::GetInstance());
 	}
 
 	/**

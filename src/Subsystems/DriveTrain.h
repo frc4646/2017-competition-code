@@ -16,7 +16,7 @@ private:
 	Spark rightMotors;
 	RobotDrive InlineDrive;
 	ADXRS450_Gyro Gyro;
-
+//	AnalogGyro Gyro;
 public:
 	DriveTrain(MotorPin left, MotorPin right);
 	void InitDefaultCommand();

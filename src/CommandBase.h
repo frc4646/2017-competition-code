@@ -22,6 +22,8 @@ public:
 	CommandBase(const std::string& name);
 	CommandBase() = default;
 
+	static void init();
+
 	// Create a single static instance of all of your subsystems
 	static std::unique_ptr<ExampleSubsystem> exampleSubsystem;
 	static std::unique_ptr<OI> oi;
