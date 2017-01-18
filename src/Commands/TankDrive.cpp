@@ -2,7 +2,9 @@
 #include "Subsystems/DriveTrain.h"
 #include "OI.h"
 
-TankDrive::TankDrive() {
+TankDrive::TankDrive()
+: CommandBase("TankDrive")
+{
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(drivetrain.get());

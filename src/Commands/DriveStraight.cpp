@@ -2,7 +2,9 @@
 #include "Subsystems/DriveTrain.h"
 #include "OI.h"
 
-DriveStraight::DriveStraight() {
+DriveStraight::DriveStraight()
+: CommandBase("DriveStraight")
+{
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(drivetrain.get());

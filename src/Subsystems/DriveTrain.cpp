@@ -1,20 +1,24 @@
 #include "DriveTrain.h"
 #include "../RobotMap.h"
+#include "Commands/TankDrive.h"
 
 DriveTrain::DriveTrain(MotorPin left, MotorPin right) :
 	Subsystem("DriveTrain"),
 	leftMotors(left),
 	rightMotors(right),
-	InlineDrive(leftMotors, rightMotors)
+	InlineDrive(leftMotors, rightMotors),
+//	Gyro(0)
+	Gyro()
 {
-	leftMotors.SetInverted(false);
-	rightMotors.SetInverted(false);
+	Gyro.Calibrate();
+	leftMotors.SetInverted(true);
+	rightMotors.SetInverted(true);
 }
 
 void DriveTrain::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-	//SetDefaultCommand(new TankDrive());
+	SetDefaultCommand(new TankDrive());
 	InlineDrive.SetSafetyEnabled(false);
 }
 
@@ -34,6 +38,7 @@ void DriveTrain::SetDrive(double power, double curve) {
 void DriveTrain::StraightDrive(double power) {
 	double gyroCurve = GetHeading()/90.0;
 	double robotPower = power;
+	std::cout << "Robot Curve is " << gyroCurve << " Robot power is " << robotPower << std::endl;
 	if (robotPower > 0) {
 		SetDrive(robotPower, -gyroCurve);
 	}

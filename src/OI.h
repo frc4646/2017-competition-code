@@ -13,8 +13,9 @@ public:
 private:
 	Joystick left;
 	Joystick right;
-	Joystick mechanism;
+//	Joystick mechanism;
 	JoystickButton driveStraight;
+	JoystickButton turn90;
 };
 
 #endif  // OI_H
