@@ -3,7 +3,7 @@
 
 VisionCalculation::VisionCalculation() : Subsystem("VisionCalculation")
 {
-	networkTable = NetworkTable::GetTable("GRIP/Contours");
+	networkTable = NetworkTable::GetTable("vision/targets");
 }
 
 VisionCalculation::~VisionCalculation()
