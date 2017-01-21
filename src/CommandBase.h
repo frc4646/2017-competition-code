@@ -9,7 +9,7 @@
 #include "OI.h"
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveTrain.h"
-#include "Subsystems/VisionCalculation.h"
+#include "Subsystems/GearVisionCalculation.h"
 
 
 /**
@@ -30,7 +30,7 @@ public:
 	static std::unique_ptr<OI> oi;
 
 	static std::unique_ptr<DriveTrain> drivetrain;
-	static std::unique_ptr<VisionCalculation> visioncalculation;
+	static std::unique_ptr<GearVisionCalculation> gearvisioncalculation;
 };
 
 #endif  // COMMAND_BASE_H

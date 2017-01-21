@@ -2,7 +2,7 @@
 #include <Commands/Scheduler.h>
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveTrain.h"
-#include "Subsystems/VisionCalculation.h"
+#include "Subsystems/GearVisionCalculation.h"
 
 // Initialize a single static instance of all of your subsystems. The following
 // line should be repeated for each subsystem in the project.
@@ -19,7 +19,7 @@ std::unique_ptr<OI> CommandBase::oi = NULL;
 //
 std::unique_ptr<DriveTrain> CommandBase::drivetrain =
 		NULL;
-std::unique_ptr<VisionCalculation> CommandBase::visioncalculation =
+std::unique_ptr<GearVisionCalculation> CommandBase::gearvisioncalculation =
 		NULL;
 
 
@@ -34,7 +34,7 @@ void CommandBase::init()
 
 	drivetrain.reset(new DriveTrain(M9,M0));
 
-	visioncalculation.reset(new VisionCalculation());
+	gearvisioncalculation.reset(new GearVisionCalculation());
 
 	oi.reset(new OI());
 
