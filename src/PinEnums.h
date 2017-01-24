@@ -29,6 +29,11 @@ enum RelayPin
 	R0, R1, R2, R3
 };
 
+enum SolenoidPin
+{
+	S0, S1, S2, S3, S4, S5, S6, S7
+};
+
 
 
 #endif /* SRC_PINENUMS_H_ */
