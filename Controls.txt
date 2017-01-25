@@ -1,0 +1,29 @@
+Controls:
+
+Driver:
+	Left Stick
+		Left Motors					Axis 1
+		Autonomous Gear Drop		Button 1		
+		Boiler Align Distance		Button 2
+	
+	Right Stick
+		Right Motors				Axis 1
+		Straight Drive				Button 1 + Axis 1
+		Boiler Align Angle			Button 2
+		
+Operator:
+	Meckinyzm Stick
+		Extend Intake Arms			Button 6
+		Retract Intake Arms			Button 4
+		Position Hood for Arc		Button 5
+		Position Hood for Key		Button 3
+		Shoot High Boiler			Button 1
+		Climb						Button 2
+		Intake On					Button 9
+		Intake Off					Button 10
+		Indexer/Agitator On			Button 7
+		Indexer/Agitator Off		Button 8
+		Manual Gear Extend			Button 11
+		Manual Gear Retract			Button 12
+		
+		

@@ -7,7 +7,7 @@
 OI::OI():
 left(0),
 right(1),
-//mechanism(2),
+mechanism(2),
 driveStraight(&left, 1),
 turn90(&left, 2)
 {
@@ -22,6 +22,5 @@ Joystick& OI::GetRightStick() {
 	return right;
 }
 Joystick& OI::GetMechanismStick() {
-//	return mechanism;
-	return left;
+	return mechanism;
 }

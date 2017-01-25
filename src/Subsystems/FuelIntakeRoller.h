@@ -4,7 +4,6 @@
 #include "WPILib.h"
 #include "Spark.h"
 #include "PinEnums.h"
-
 #include <Commands/Subsystem.h>
 
 class FuelIntakeRoller : public Subsystem {
