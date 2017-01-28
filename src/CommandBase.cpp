@@ -22,10 +22,10 @@ std::unique_ptr<ExampleSubsystem> CommandBase::exampleSubsystem =
 		NULL;
 std::unique_ptr<OI> CommandBase::oi = NULL;
 //
-std::unique_ptr<DriveTrain> CommandBase::drivetrain =
-		NULL;
-std::unique_ptr<GearVisionCalculation> CommandBase::gearvisioncalculation =
-		NULL;
+std::unique_ptr<DriveTrain> CommandBase::drivetrain = NULL;
+
+std::unique_ptr<GearVisionCalculation> CommandBase::gearvisioncalculation = NULL;
+
 std::unique_ptr<Climber> CommandBase::climber = NULL;
 
 std::unique_ptr<FuelIntakeRoller> CommandBase::roller = NULL;

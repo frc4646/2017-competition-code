@@ -4,7 +4,7 @@
 #include "../CommandBase.h"
 #include "WPILib.h"
 #include "Subsystems/NullPIDOutput.h"
-#include "Subsystems/GearAnglePIDSource.h"
+#include <Subsystems/GearAnglePIDSource.h>
 
 class GearCenter : public CommandBase {
 public:

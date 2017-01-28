@@ -1,6 +1,8 @@
 #include "GearCenter.h"
 #include "Subsystems/GearVisionCalculation.h"
+#include "Subsystems/GearAnglePIDSource.h"
 #include "Subsystems/DriveTrain.h"
+#include "CommandBase.h"
 #include <algorithm>
 
 GearCenter::GearCenter():
@@ -9,8 +11,8 @@ turning(0),
 robotTurn(0),
 confidence(0),
 po(),
-ps(gearvisioncalculation),
-pc(0.,0,0,&ps,&po)
+ps(gearvisioncalculation.get()),
+pc(0.0,0,0,&ps,&po)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());

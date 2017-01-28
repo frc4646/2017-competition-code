@@ -14,8 +14,23 @@ private:
 	Joystick left;
 	Joystick right;
 	Joystick mechanism;
+	JoystickButton autoGearDrop;
+	JoystickButton boilerDistance;
 	JoystickButton driveStraight;
-	JoystickButton turn90;
+	JoystickButton boilerAngle;
+	JoystickButton extendArms;
+	JoystickButton retractArms;
+	JoystickButton hoodArc;
+	JoystickButton hoodKey;
+	JoystickButton shoot;
+	JoystickButton climb;
+	JoystickButton intakeOn;
+	JoystickButton intakeOff;
+	JoystickButton indexerOn;
+	JoystickButton indexerOff;
+	JoystickButton extendGear;
+	JoystickButton retractGear;
+	//JoystickButton turn90;
 };
 
 #endif  // OI_H
