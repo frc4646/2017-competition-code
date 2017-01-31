@@ -2,7 +2,9 @@
 #include "WPILib.h"
 #include "Subsystems/FuelIntakeRoller.h"
 
-IntakeCommand::IntakeCommand() {
+IntakeCommand::IntakeCommand(double power):
+rollerPower(power)
+{
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(roller.get());
@@ -15,7 +17,7 @@ void IntakeCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void IntakeCommand::Execute() {
-	roller->SetSpeed(0.5);
+	roller->SetSpeed(rollerPower);
 }
 
 // Make this return true when this Command no longer needs to run execute()

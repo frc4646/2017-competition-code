@@ -6,12 +6,14 @@
 
 class IntakeCommand : public CommandBase {
 public:
-	IntakeCommand();
+	IntakeCommand(double power);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
+private:
+	double rollerPower;
 };
 
 #endif  // IntakeCommand_H

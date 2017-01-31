@@ -18,7 +18,7 @@ void GearVisionCalculation::InitDefaultCommand() {
 float GearVisionCalculation::GoalAngle() {
 	const int desiredPosition = 160;
 	xVals = networkTable->GetNumberArray("centerX", llvm::ArrayRef<double>());
-	if (!xVals.empty())
+	if (xVals.size() == 2)
 	{
 		goalX = ((float)xVals[0] + (float)xVals[1])/2.0;
 	}

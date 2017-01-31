@@ -3,6 +3,9 @@
 #include "Commands/TurnForAngle.h"
 #include "Commands/ArmExtendCommand.h"
 #include "Commands/ArmRetractCommand.h"
+#include "Commands/GearDrop.h"
+#include "Commands/ClimbRope.h"
+#include "Commands/IntakeCommand.h"
 
 #include <WPILib.h>
 
@@ -33,6 +36,10 @@ retractGear(&mechanism, 12)
 	driveStraight.WhileHeld(new DriveStraight());
 	extendArms.WhenPressed(new ArmExtendCommand());
 	retractArms.WhenPressed(new ArmRetractCommand());
+	autoGearDrop.WhenPressed(new GearDrop());
+	climb.WhileHeld(new ClimbRope());
+	intakeOn.WhenPressed(new IntakeCommand(0.5));
+	intakeOff.WhenPressed(new IntakeCommand(0));
 	//turn90.WhenPressed(new TurnForAngle(0.5,90));
 }
 Joystick& OI::GetLeftStick() {

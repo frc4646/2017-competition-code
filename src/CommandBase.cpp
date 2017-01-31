@@ -30,7 +30,9 @@ std::unique_ptr<Climber> CommandBase::climber = NULL;
 
 std::unique_ptr<FuelIntakeRoller> CommandBase::roller = NULL;
 
-std::unique_ptr<UltrasonicSensor> CommandBase::usensor = NULL;
+std::unique_ptr<UltrasonicSensor> CommandBase::frontusensor = NULL;
+
+std::unique_ptr<UltrasonicSensor> CommandBase::backusensor = NULL;
 
 std::unique_ptr<FuelIntakeArms> CommandBase::arms = NULL;
 
@@ -48,7 +50,7 @@ void CommandBase::init()
 
 	gearvisioncalculation.reset(new GearVisionCalculation());
 
-	oi.reset(new OI());
+
 
 	climber.reset(new Climber(M5));
 
@@ -56,6 +58,10 @@ void CommandBase::init()
 
 	arms.reset(new FuelIntakeArms(S0, S1));
 
-	usensor.reset(new UltrasonicSensor(A0));
+	frontusensor.reset(new UltrasonicSensor(A0));
+	backusensor.reset(new UltrasonicSensor(A1));
+
+	oi.reset(new OI());
+	SmartDashboard::PutData(backusensor.get());
 
 }

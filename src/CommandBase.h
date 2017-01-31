@@ -37,7 +37,8 @@ public:
 	static std::unique_ptr<GearVisionCalculation> gearvisioncalculation;
 	static std::unique_ptr<Climber> climber;
 	static std::unique_ptr<FuelIntakeRoller> roller;
-	static std::unique_ptr<UltrasonicSensor> usensor;
+	static std::unique_ptr<UltrasonicSensor> frontusensor;
+	static std::unique_ptr<UltrasonicSensor> backusensor;
 	static std::unique_ptr<FuelIntakeArms> arms;
 };
 
