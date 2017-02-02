@@ -18,6 +18,6 @@ GearAnglePIDSource::~GearAnglePIDSource() {
 double GearAnglePIDSource::PIDGet()
 {
 	double result = -gearVisionCalculation->GoalAngle()/320.0;
-	SmartDashboard::PutNumber("PIDGet", result);
+	SmartDashboard::PutNumber("GearPIDGet", result);
 	return result;
 }

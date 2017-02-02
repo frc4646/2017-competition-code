@@ -21,5 +21,5 @@ GearDrop::GearDrop() {
 	// arm.
 	AddSequential(new GearCenter());
 	AddSequential(new GearCenter());
-	AddSequential(new DriveUntilDistance(0.3,15));
+	AddSequential(new DriveUntilDistance(0.3,20));
 }

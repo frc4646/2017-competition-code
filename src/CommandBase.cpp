@@ -3,10 +3,12 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/GearVisionCalculation.h"
+#include "Subsystems/BoilerVisionCalculation.h"
 #include "Subsystems/Climber.h"
 #include "Subsystems/FuelIntakeRoller.h"
 #include "Subsystems/UltrasonicSensor.h"
 #include "Subsystems/FuelIntakeArms.h"
+#include "Subsystems/GearPneumatic.h"
 
 
 // Initialize a single static instance of all of your subsystems. The following
@@ -26,6 +28,8 @@ std::unique_ptr<DriveTrain> CommandBase::drivetrain = NULL;
 
 std::unique_ptr<GearVisionCalculation> CommandBase::gearvisioncalculation = NULL;
 
+std::unique_ptr<BoilerVisionCalculation> CommandBase::boilervisioncalculation = NULL;
+
 std::unique_ptr<Climber> CommandBase::climber = NULL;
 
 std::unique_ptr<FuelIntakeRoller> CommandBase::roller = NULL;
@@ -35,6 +39,8 @@ std::unique_ptr<UltrasonicSensor> CommandBase::frontusensor = NULL;
 std::unique_ptr<UltrasonicSensor> CommandBase::backusensor = NULL;
 
 std::unique_ptr<FuelIntakeArms> CommandBase::arms = NULL;
+
+std::unique_ptr<GearPneumatic> CommandBase::gearpneumatic = NULL;
 
 
 CommandBase::CommandBase(const std::string &name) :
@@ -50,7 +56,7 @@ void CommandBase::init()
 
 	gearvisioncalculation.reset(new GearVisionCalculation());
 
-
+	boilervisioncalculation.reset(new BoilerVisionCalculation());
 
 	climber.reset(new Climber(M5));
 
@@ -60,6 +66,8 @@ void CommandBase::init()
 
 	frontusensor.reset(new UltrasonicSensor(A0));
 	backusensor.reset(new UltrasonicSensor(A1));
+
+	gearpneumatic.reset(new GearPneumatic(S2, S3));
 
 	oi.reset(new OI());
 	SmartDashboard::PutData(backusensor.get());

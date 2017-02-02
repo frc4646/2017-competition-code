@@ -6,6 +6,8 @@
 #include "Commands/GearDrop.h"
 #include "Commands/ClimbRope.h"
 #include "Commands/IntakeCommand.h"
+#include "Commands/BoilerCenter.h"
+#include "Commands/BoilerDistance.h"
 
 #include <WPILib.h>
 
@@ -15,8 +17,8 @@ right(1),
 mechanism(2),
 autoGearDrop(&left, 1),
 boilerDistance(&left, 2),
-driveStraight(&right, 1),
 boilerAngle(&right, 2),
+driveStraight(&right, 1),
 extendArms(&mechanism, 6),
 retractArms(&mechanism, 4),
 hoodArc(&mechanism, 5),
@@ -40,6 +42,8 @@ retractGear(&mechanism, 12)
 	climb.WhileHeld(new ClimbRope());
 	intakeOn.WhenPressed(new IntakeCommand(0.5));
 	intakeOff.WhenPressed(new IntakeCommand(0));
+	boilerAngle.WhileHeld(new BoilerCenter());
+	boilerDistance.WhileHeld(new BoilerDistance());
 	//turn90.WhenPressed(new TurnForAngle(0.5,90));
 }
 Joystick& OI::GetLeftStick() {

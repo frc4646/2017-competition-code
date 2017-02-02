@@ -16,8 +16,8 @@ private:
 	Joystick mechanism;
 	JoystickButton autoGearDrop;
 	JoystickButton boilerDistance;
-	JoystickButton driveStraight;
 	JoystickButton boilerAngle;
+	JoystickButton driveStraight;
 	JoystickButton extendArms;
 	JoystickButton retractArms;
 	JoystickButton hoodArc;

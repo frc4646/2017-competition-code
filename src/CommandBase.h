@@ -10,10 +10,12 @@
 #include "Subsystems/ExampleSubsystem.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/GearVisionCalculation.h"
+#include "Subsystems/BoilerVisionCalculation.h"
 #include "Subsystems/Climber.h"
 #include "Subsystems/FuelIntakeRoller.h"
 #include "Subsystems/UltrasonicSensor.h"
 #include "Subsystems/FuelIntakeArms.h"
+#include "Subsystems/GearPneumatic.h"
 
 
 /**
@@ -35,11 +37,13 @@ public:
 
 	static std::unique_ptr<DriveTrain> drivetrain;
 	static std::unique_ptr<GearVisionCalculation> gearvisioncalculation;
+	static std::unique_ptr<BoilerVisionCalculation> boilervisioncalculation;
 	static std::unique_ptr<Climber> climber;
 	static std::unique_ptr<FuelIntakeRoller> roller;
 	static std::unique_ptr<UltrasonicSensor> frontusensor;
 	static std::unique_ptr<UltrasonicSensor> backusensor;
 	static std::unique_ptr<FuelIntakeArms> arms;
+	static std::unique_ptr<GearPneumatic> gearpneumatic;
 };
 
 #endif  // COMMAND_BASE_H
