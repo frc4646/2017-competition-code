@@ -16,7 +16,19 @@ public:
 		CommandBase::init();
 
 		chooser.AddDefault("Default Auto", new ExampleCommand());
-		// chooser.AddObject("My Auto", new MyAutoCommand());
+		DriverStation& ds = DriverStation::GetInstance();
+		DriverStation::Alliance alliance = ds.GetAlliance();
+		if(alliance == DriverStation::Alliance::kBlue){
+			// chooser.AddObject("Blue Auto", new MyAutoCommand());
+		}
+		if(alliance == DriverStation::Alliance::kRed){
+			// chooser.AddObject("Red Auto", new MyAutoCommand());
+		}
+		else{
+			// chooser.AddObject("Blue Auto", new MyAutoCommand());
+			// chooser.AddObject("Red Auto", new MyAutoCommand());
+		}
+
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
 		frc::SmartDashboard::PutData(frc::Scheduler::GetInstance());
 	}
@@ -55,6 +67,8 @@ public:
 		} */
 
 		autonomousCommand.reset(chooser.GetSelected());
+
+
 
 		if (autonomousCommand.get() != nullptr) {
 			autonomousCommand->Start();

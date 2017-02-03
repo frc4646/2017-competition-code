@@ -22,4 +22,9 @@ GearDrop::GearDrop() {
 	AddSequential(new GearCenter());
 	AddSequential(new GearCenter());
 	AddSequential(new DriveUntilDistance(0.3,20));
+	AddSequential(new GearExtendCommand());
+	AddSequential((new SetDriveCommand(-0.5, 0)),0.5);
+	AddSequential((new SetDriveCommand(0, 0)),0.2);
+	AddSequential(new GearRetractCommand());
+
 }

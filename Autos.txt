@@ -1,0 +1,75 @@
+Autonomous Porgrams
+
+BlueGearCenterAuto
+BlueGearLeftAuto
+BlueGearRightAuto
+BlueHighGoalAuto
+BlueGearCenterHighGoalAuto
+BlueGearSideHighGoalAuto
+BlueDumpHopperAuto
+BlueDumpHopperHighGoalAuto
+
+RedGearCenterAuto
+RedGearLeftAuto
+RedGearRightAuto
+RedHighGoalAuto
+RedGearCenterHighGoalAuto
+RedGearSideHighGoalAuto
+RedDumpHopperAuto
+RedDumpHopperHighGoalAuto
+
+DoNothingAuto
+DriveToNeutralAuto
+
+Implementation:
+
+RedGearCenterAuto
+	DriveUntilDistance	 	Drive away from back wall
+	GearDrop 				Drop the gear
+	DriveUntilFar			Drive away from lift
+RedGearLeftAuto
+	DriveUntilDistance	 	Drive away from back wall
+	TurnForAngle			45 Degrees right
+	DriveUntilDistance	 	Drive towards lift
+	GearDrop 				Drop the gear
+	DriveUntilFar			Drive away from lift
+RedGearRightAuto
+	DriveUntilDistance	 	Drive away from back wall
+	TurnForAngle			-45 Degrees left
+	DriveUntilDistance	 	Drive towards lift
+	GearDrop 				Drop the gear
+	DriveUntilFar			Drive away from lift
+RedHighGoalAuto 
+	...
+RedGearCenterHighGoalAuto
+	...
+	DriveUntilDistance	 	Drive away from back wall
+	GearDrop 				Drop the gear
+	DriveUntilFar			Drive away from lift
+	...
+RedGearSideHighGoalAuto
+	...
+	DriveUntilDistance	 	Drive away from back wall
+	TurnForAngle			-45 Degrees left
+	DriveUntilDistance	 	Drive towards lift
+	GearDrop 				Drop the gear
+	DriveUntilFar			Drive away from lift
+	...
+RedDumpHopperAuto
+	DriveUntilDistance	 	Drive away from back wall
+	TurnForAngle			90 Degrees right
+	DriveUntilDistance	 	Drive towards hopper
+	Wait					Balls fill fuel tank
+	DriveUntilFar			Drive away from hopper
+RedDumpHopperHighGoalAuto
+	...
+	DriveUntilDistance	 	Drive away from back wall
+	TurnForAngle			90 Degrees right
+	DriveUntilDistance	 	Drive towards hopper
+	Wait					Balls fill fuel tank
+	DriveUntilFar			Drive away from hopper
+	...
+DoNothingAuto
+	DriveForTime			Power 0, timeout after 1 second
+DriveToNeutralAuto
+	DriveForTime			Power 0.75, timeout after some seconds
