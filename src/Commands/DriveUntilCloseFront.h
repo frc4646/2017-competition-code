@@ -1,12 +1,12 @@
-#ifndef DriveUntilDistance_H
-#define DriveUntilDistance_H
+#ifndef DriveUntilCloseFront_H
+#define DriveUntilCloseFront_H
 
 #include "../CommandBase.h"
 #include "WPILib.h"
 
-class DriveUntilDistance : public CommandBase {
+class DriveUntilCloseFront : public CommandBase {
 public:
-	DriveUntilDistance(double power, double distance);
+	DriveUntilCloseFront(double power, double distance);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -19,4 +19,4 @@ private:
 
 };
 
-#endif  // DriveUntilDistance_H
+#endif  // DriveUntilCloseFront_H

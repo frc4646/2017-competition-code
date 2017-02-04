@@ -1,10 +1,9 @@
-#include <Commands/DriveUntilCloseFront.h>
-#include "GearDrop.h"
-#include "Commands/GearCenter.h"
-#include "Commands/GearExtendCommand.h"
-#include "Commands/SetDriveCommand.h"
-#include "Commands/GearRetractCommand.h"
-GearDrop::GearDrop() {
+#include <Commands/DriveUntilCloseBack.h>
+#include <Commands/DriveUntilFarBack.h>
+#include "RedGearCenterAuto.h"
+#include "Commands/GearDrop.h"
+
+RedGearCenterAuto::RedGearCenterAuto() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -21,12 +20,10 @@ GearDrop::GearDrop() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new GearCenter());
-	AddSequential(new GearCenter());
-	AddSequential(new DriveUntilCloseFront(0.3,20));
-	AddSequential(new GearExtendCommand());
-	AddSequential((new SetDriveCommand(-0.5, 0)),0.5);
-	AddSequential((new SetDriveCommand(0, 0)),0.2);
-	AddSequential(new GearRetractCommand());
-
+	//DriveUntilDistance	 	Drive away from back wall
+	//GearDrop 				Drop the gear
+	//DriveUntilFar			Drive away from lift
+	AddSequential(new DriveUntilCloseBack(.75, 10));
+	AddSequential(new GearDrop());
+	AddSequential(new DriveUntilFarBack(-.75, 30));
 }

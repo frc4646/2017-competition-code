@@ -1,10 +1,7 @@
-#include <Commands/DriveUntilCloseFront.h>
-#include "GearDrop.h"
-#include "Commands/GearCenter.h"
-#include "Commands/GearExtendCommand.h"
-#include "Commands/SetDriveCommand.h"
-#include "Commands/GearRetractCommand.h"
-GearDrop::GearDrop() {
+#include "DriveToNeutralAuto.h"
+#include <Commands/DriveStraightTime.h>
+
+DriveToNeutralAuto::DriveToNeutralAuto() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -21,12 +18,5 @@ GearDrop::GearDrop() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new GearCenter());
-	AddSequential(new GearCenter());
-	AddSequential(new DriveUntilCloseFront(0.3,20));
-	AddSequential(new GearExtendCommand());
-	AddSequential((new SetDriveCommand(-0.5, 0)),0.5);
-	AddSequential((new SetDriveCommand(0, 0)),0.2);
-	AddSequential(new GearRetractCommand());
-
+	AddSequential(new DriveStraightTime(.5), 5);
 }

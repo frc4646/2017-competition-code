@@ -1,6 +1,14 @@
 Autonomous Porgrams
 
-BlueGearCenterAuto
+To Do
+	Fill out all of the drive distance commands. 
+RobotDefinitions
+	Front of Bot Intake Side
+	Rear of Bot Gear Side
+	Positive Power is Forwards
+	Positive Angles with Positive Power Turns Clockwise (right) 
+	Negitive Angles with Negative Power Turns CounterClockwise (left)
+BlueGearCenterAuto                                 DONE
 BlueGearLeftAuto
 BlueGearRightAuto
 BlueHighGoalAuto
@@ -9,65 +17,65 @@ BlueGearSideHighGoalAuto
 BlueDumpHopperAuto
 BlueDumpHopperHighGoalAuto
 
-RedGearCenterAuto
-RedGearLeftAuto
-RedGearRightAuto
+RedGearCenterAuto                                  DONE(Almost)   
+RedGearLeftAuto                                    DONE(Almost)
+RedGearRightAuto                                   DONE(Almost)
 RedHighGoalAuto
 RedGearCenterHighGoalAuto
 RedGearSideHighGoalAuto
 RedDumpHopperAuto
 RedDumpHopperHighGoalAuto
 
-DoNothingAuto
-DriveToNeutralAuto
+DoNothingAuto                                      DONE
+DriveToNeutralAuto                                 DONE
 
 Implementation:
 
 RedGearCenterAuto
-	DriveUntilDistance	 	Drive away from back wall
+	DriveUntilCloseBack	 	Drive away from back wall
 	GearDrop 				Drop the gear
-	DriveUntilFar			Drive away from lift
+	DriveUntilFarBack			Drive away from lift
 RedGearLeftAuto
-	DriveUntilDistance	 	Drive away from back wall
+	DriveUntilFarFront	 	Drive away from back wall
 	TurnForAngle			45 Degrees right
-	DriveUntilDistance	 	Drive towards lift
+	DriveUntilCloseBack	 	Drive towards lift
 	GearDrop 				Drop the gear
-	DriveUntilFar			Drive away from lift
+	DriveUntilFarBack			Drive away from lift
 RedGearRightAuto
-	DriveUntilDistance	 	Drive away from back wall
+	DriveUntilFarFront	 	Drive away from back wall
 	TurnForAngle			-45 Degrees left
-	DriveUntilDistance	 	Drive towards lift
+	DriveUntilCloseBack	 	Drive towards lift
 	GearDrop 				Drop the gear
-	DriveUntilFar			Drive away from lift
+	DriveUntilFarBack			Drive away from lift
 RedHighGoalAuto 
 	...
 RedGearCenterHighGoalAuto
 	...
-	DriveUntilDistance	 	Drive away from back wall
+	DriveUntilFarFront	 	Drive away from back wall
 	GearDrop 				Drop the gear
-	DriveUntilFar			Drive away from lift
+	DriveUntilFarBack			Drive away from lift
 	...
 RedGearSideHighGoalAuto
 	...
-	DriveUntilDistance	 	Drive away from back wall
+	DriveUntilFarFront	 	Drive away from back wall
 	TurnForAngle			-45 Degrees left
-	DriveUntilDistance	 	Drive towards lift
+	DriveUntilCloseBack	 	Drive towards lift
 	GearDrop 				Drop the gear
-	DriveUntilFar			Drive away from lift
+	DriveUntilFarBack			Drive away from lift
 	...
 RedDumpHopperAuto
-	DriveUntilDistance	 	Drive away from back wall
+	DriveUntilFarFront	 	Drive away from back wall
 	TurnForAngle			90 Degrees right
-	DriveUntilDistance	 	Drive towards hopper
+	DriveUntilCloseFront	 	Drive towards hopper
 	Wait					Balls fill fuel tank
-	DriveUntilFar			Drive away from hopper
+	DriveUntilFarFront			Drive away from hopper
 RedDumpHopperHighGoalAuto
 	...
-	DriveUntilDistance	 	Drive away from back wall
+	DriveUntilFarFront	 	Drive away from back wall
 	TurnForAngle			90 Degrees right
-	DriveUntilDistance	 	Drive towards hopper
+	DriveUntilCloseFront	 	Drive towards hopper
 	Wait					Balls fill fuel tank
-	DriveUntilFar			Drive away from hopper
+	DriveUntilFarFront			Drive away from hopper
 	...
 DoNothingAuto
 	DriveForTime			Power 0, timeout after 1 second

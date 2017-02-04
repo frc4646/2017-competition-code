@@ -1,7 +1,7 @@
-#include "DriveUntilDistance.h"
+#include <Commands/DriveUntilCloseFront.h>
 #include "WPILib.h"
 
-DriveUntilDistance::DriveUntilDistance(double power, double distance):
+DriveUntilCloseFront::DriveUntilCloseFront(double power, double distance):
 targetDistance(distance),
 drivePower(power),
 confidence(0)
@@ -13,12 +13,12 @@ confidence(0)
 }
 
 // Called just before this Command runs the first time
-void DriveUntilDistance::Initialize() {
-
+void DriveUntilCloseFront::Initialize() {
+	confidence = 0;
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DriveUntilDistance::Execute() {
+void DriveUntilCloseFront::Execute() {
 	drivetrain->StraightDrive(drivePower);
 	SmartDashboard::PutNumber("Ultrasonic",backusensor->GetDistance());
 	if(backusensor->GetDistance() < targetDistance){
@@ -27,17 +27,17 @@ void DriveUntilDistance::Execute() {
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DriveUntilDistance::IsFinished() {
+bool DriveUntilCloseFront::IsFinished() {
 	return confidence >= 3;
 }
 
 // Called once after isFinished returns true
-void DriveUntilDistance::End() {
+void DriveUntilCloseFront::End() {
 	drivetrain->SetDrive(0, 0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DriveUntilDistance::Interrupted() {
+void DriveUntilCloseFront::Interrupted() {
 	End();
 }
