@@ -16,8 +16,8 @@
 #include "Subsystems/UltrasonicSensor.h"
 #include "Subsystems/FuelIntakeArms.h"
 #include "Subsystems/GearPneumatic.h"
-
-
+#include "Subsystems/Indexer.h"
+#include "Subsystems/LauncherPID.h"
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
  * CommandBase stores creates and stores each control system. To access a
@@ -44,6 +44,8 @@ public:
 	static std::unique_ptr<UltrasonicSensor> backusensor;
 	static std::unique_ptr<FuelIntakeArms> arms;
 	static std::unique_ptr<GearPneumatic> gearpneumatic;
+	static std::unique_ptr<Indexer> indexer;
+	static std::unique_ptr<LauncherPID> launcher;
 };
 
 #endif  // COMMAND_BASE_H

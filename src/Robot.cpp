@@ -18,7 +18,7 @@ public:
 		chooser.AddDefault("Default Auto", new ExampleCommand());
 		DriverStation& ds = DriverStation::GetInstance();
 		DriverStation::Alliance alliance = ds.GetAlliance();
-		if(alliance == DriverStation::Alliance::kBlue){
+		/*if(alliance == DriverStation::Alliance::kBlue){
 			// chooser.AddObject("Blue Auto", new MyAutoCommand());
 		}
 		if(alliance == DriverStation::Alliance::kRed){
@@ -30,7 +30,7 @@ public:
 		}
 
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
-		frc::SmartDashboard::PutData(frc::Scheduler::GetInstance());
+		frc::SmartDashboard::PutData(frc::Scheduler::GetInstance());*/
 	}
 
 	/**

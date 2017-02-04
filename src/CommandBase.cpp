@@ -9,6 +9,8 @@
 #include "Subsystems/UltrasonicSensor.h"
 #include "Subsystems/FuelIntakeArms.h"
 #include "Subsystems/GearPneumatic.h"
+#include "Subsystems/Indexer.h"
+#include "Subsystems/LauncherPID.h"
 
 
 // Initialize a single static instance of all of your subsystems. The following
@@ -42,6 +44,9 @@ std::unique_ptr<FuelIntakeArms> CommandBase::arms = NULL;
 
 std::unique_ptr<GearPneumatic> CommandBase::gearpneumatic = NULL;
 
+std::unique_ptr<LauncherPID> CommandBase::launcher = NULL;
+
+std::unique_ptr<Indexer> CommandBase::indexer = NULL;
 
 CommandBase::CommandBase(const std::string &name) :
 		frc::Command(name) {
@@ -69,7 +74,12 @@ void CommandBase::init()
 
 	gearpneumatic.reset(new GearPneumatic(S2, S3));
 
+	indexer.reset(new Indexer(M6));
+
+	launcher.reset(new LauncherPID(M7, D1));
+
 	oi.reset(new OI());
 	SmartDashboard::PutData(backusensor.get());
+
 
 }
