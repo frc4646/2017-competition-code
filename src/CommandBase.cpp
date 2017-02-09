@@ -57,15 +57,15 @@ void CommandBase::init()
 {
 	exampleSubsystem.reset(new ExampleSubsystem());
 
-	drivetrain.reset(new DriveTrain(M9,M0));
+	drivetrain.reset(new DriveTrain(M2,M5));
 
 	gearvisioncalculation.reset(new GearVisionCalculation());
 
 	boilervisioncalculation.reset(new BoilerVisionCalculation());
 
-	climber.reset(new Climber(M5));
+	climber.reset(new Climber(M4));
 
-	roller.reset(new FuelIntakeRoller(M4));
+	roller.reset(new FuelIntakeRoller(M3));
 
 	arms.reset(new FuelIntakeArms(S0, S1));
 
@@ -74,9 +74,9 @@ void CommandBase::init()
 
 	gearpneumatic.reset(new GearPneumatic(S2, S3));
 
-	indexer.reset(new Indexer(M6));
+	indexer.reset(new Indexer(M1));
 
-	launcher.reset(new LauncherPID(M7, D1));
+	launcher.reset(new LauncherPID(M0, D1));
 
 	oi.reset(new OI());
 	SmartDashboard::PutData(backusensor.get());

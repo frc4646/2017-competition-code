@@ -1,6 +1,6 @@
 #include "Index.h"
 #include "WPILib.h"
-#include "Subsystems/Index.h"
+#include "Subsystems/Indexer.h"
 
 Index::Index(double power):
 indexPower(power)

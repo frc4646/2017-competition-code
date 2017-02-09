@@ -1,6 +1,6 @@
 #include "ManualLaunchCommand.h"
 #include "WPILib.h"
-#include "Subsystems/LauncherPID"
+#include "Subsystems/LauncherPID.h"
 
 ManualLaunchCommand::ManualLaunchCommand(double power):
 launchPower(power)

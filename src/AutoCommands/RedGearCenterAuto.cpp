@@ -23,7 +23,7 @@ RedGearCenterAuto::RedGearCenterAuto() {
 	//DriveUntilDistance	 	Drive away from back wall
 	//GearDrop 				Drop the gear
 	//DriveUntilFar			Drive away from lift
-	AddSequential(new DriveUntilCloseBack(.75, 10));
-	AddSequential(new GearDrop());
-	AddSequential(new DriveUntilFarBack(-.75, 30));
+//	AddSequential(new DriveUntilCloseBack(.75, 10));
+//	AddSequential(new GearDrop());
+//	AddSequential(new DriveUntilFarBack(-.75, 30));
 }

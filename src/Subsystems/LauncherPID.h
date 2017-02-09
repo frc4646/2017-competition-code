@@ -15,8 +15,8 @@ public:
 	void SetManual(double power);
 
 private:
-	Spark& pidMotor;
-	Counter& pidEncoder;
+	Spark pidMotor;
+	Counter pidEncoder;
 
 };
 
