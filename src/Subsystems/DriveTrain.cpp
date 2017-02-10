@@ -11,8 +11,8 @@ DriveTrain::DriveTrain(MotorPin left, MotorPin right) :
 	Gyro()
 {
 	Gyro.Calibrate();
-	leftMotors.SetInverted(true);
-	rightMotors.SetInverted(true);
+//	leftMotors.SetInverted(true);
+//	rightMotors.SetInverted(true);
 }
 
 void DriveTrain::InitDefaultCommand() {

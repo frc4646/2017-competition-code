@@ -17,7 +17,7 @@ void DriveStraight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveStraight::Execute() {
-	double robotPower = -oi->GetLeftStick().GetRawAxis(1);
+	double robotPower = -oi->GetRightStick().GetRawAxis(1);
 	drivetrain->StraightDrive(robotPower);
 }
 

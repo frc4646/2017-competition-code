@@ -9,7 +9,7 @@ confidence(0)
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(drivetrain.get());
-	Requires(backusensor.get());
+	Requires(frontusensor.get());
 }
 
 // Called just before this Command runs the first time
@@ -20,8 +20,8 @@ void DriveUntilCloseFront::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void DriveUntilCloseFront::Execute() {
 	drivetrain->StraightDrive(drivePower);
-	SmartDashboard::PutNumber("Ultrasonic",backusensor->GetDistance());
-	if(backusensor->GetDistance() < targetDistance){
+	SmartDashboard::PutNumber("Ultrasonic",frontusensor->GetDistance());
+	if(frontusensor->GetDistance() < targetDistance){
 		confidence++;
 	}
 }
