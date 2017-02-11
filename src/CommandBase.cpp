@@ -11,6 +11,7 @@
 #include "Subsystems/GearPneumatic.h"
 #include "Subsystems/Indexer.h"
 #include "Subsystems/LauncherPID.h"
+#include "Subsystems/LauncherHood.h"
 
 
 // Initialize a single static instance of all of your subsystems. The following
@@ -48,6 +49,8 @@ std::unique_ptr<LauncherPID> CommandBase::launcher = NULL;
 
 std::unique_ptr<Indexer> CommandBase::indexer = NULL;
 
+std::unique_ptr<LauncherHood> CommandBase::launcherhood = NULL;
+
 CommandBase::CommandBase(const std::string &name) :
 		frc::Command(name) {
 
@@ -77,6 +80,8 @@ void CommandBase::init()
 	indexer.reset(new Indexer(M1));
 
 	launcher.reset(new LauncherPID(M0, D1));
+
+	launcherhood.reset(new LauncherHood(S4));
 
 	oi.reset(new OI());
 	SmartDashboard::PutData(backusensor.get());
