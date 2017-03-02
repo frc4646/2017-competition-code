@@ -12,7 +12,7 @@ robotTurn(0),
 confidence(0),
 po(),
 ps(gearvisioncalculation.get()),
-pc(0.25,0,0,&ps,&po, 0.05)
+pc(1,0,0,&ps,&po, 0.05)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
@@ -33,6 +33,7 @@ void GearCenter::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void GearCenter::Execute() {
 	robotTurn = pc.Get();
+	SmartDashboard::PutNumber("Turn Power", robotTurn);
 	const float deadband = 0.25;
 
 	if(robotTurn > 0)

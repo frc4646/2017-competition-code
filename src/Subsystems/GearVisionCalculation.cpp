@@ -2,7 +2,7 @@
 #include "../RobotMap.h"
 
 GearVisionCalculation::GearVisionCalculation() : Subsystem("GearVisionCalculation"), goalX(0) {
-	networkTable = NetworkTable::GetTable("vision/targets");
+	networkTable = NetworkTable::GetTable("vision/targets_Rear");
 }
 
 GearVisionCalculation::~GearVisionCalculation()
@@ -16,7 +16,7 @@ void GearVisionCalculation::InitDefaultCommand() {
 }
 
 float GearVisionCalculation::GoalAngle() {
-	const int desiredPosition = 160;
+	const int desiredPosition = 72.25;
 	xVals = networkTable->GetNumberArray("centerX", llvm::ArrayRef<double>());
 	if (xVals.size() == 2)
 	{

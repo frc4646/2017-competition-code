@@ -13,8 +13,8 @@ Driver:
 		
 Operator:
 	Meckinyzm Stick
-		Extend Intake Arms			Button 6
-		Retract Intake Arms			Button 4
+		Extend Intake Arms			Button 
+		Retract Intake Arms			Button 
 		Position Hood for Arc		Button 5
 		Position Hood for Key		Button 3
 		Shoot High Boiler			Button 1
@@ -23,7 +23,7 @@ Operator:
 		Intake Off					Button 10
 		Indexer/Agitator On			Button 7
 		Indexer/Agitator Off		Button 8
-		Manual Gear Extend			Button 11
-		Manual Gear Retract			Button 12
+		Manual Gear Extend			Button 6
+		Manual Gear Retract			Button 4
 		
 		

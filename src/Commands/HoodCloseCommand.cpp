@@ -1,34 +1,33 @@
-#include "ArmExtendCommand.h"
-#include "WPILib.h"
+#include "HoodCloseCommand.h"
 
-ArmExtendCommand::ArmExtendCommand() {
+HoodCloseCommand::HoodCloseCommand() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	Requires(arms.get());
+	Requires(launcherhood.get());
 }
 
 // Called just before this Command runs the first time
-void ArmExtendCommand::Initialize() {
+void HoodCloseCommand::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmExtendCommand::Execute() {
-	arms->ArmExtend();
+void HoodCloseCommand::Execute() {
+	launcherhood->Retract();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmExtendCommand::IsFinished() {
+bool HoodCloseCommand::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ArmExtendCommand::End() {
-	arms->Stop();
+void HoodCloseCommand::End() {
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArmExtendCommand::Interrupted() {
-	arms->Stop();
+void HoodCloseCommand::Interrupted() {
+
 }

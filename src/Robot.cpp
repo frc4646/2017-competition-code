@@ -16,8 +16,10 @@ public:
 		CommandBase::init();
 
 		chooser.AddDefault("Default Auto", new ExampleCommand());
-		DriverStation& ds = DriverStation::GetInstance();
-		DriverStation::Alliance alliance = ds.GetAlliance();
+		Compressor *c = new Compressor(0);
+		c->Start();
+//		DriverStation& ds = DriverStation::GetInstance();
+//		DriverStation::Alliance alliance = ds.GetAlliance();
 		/*if(alliance == DriverStation::Alliance::kBlue){
 			// chooser.AddObject("Blue Auto", new MyAutoCommand());
 		}
@@ -66,7 +68,7 @@ public:
 			autonomousCommand.reset(new ExampleCommand());
 		} */
 
-		autonomousCommand.reset(chooser.GetSelected());
+//		autonomousCommand.reset(chooser.GetSelected());
 
 
 

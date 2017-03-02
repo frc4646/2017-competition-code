@@ -7,7 +7,6 @@
 #include "Subsystems/Climber.h"
 #include "Subsystems/FuelIntakeRoller.h"
 #include "Subsystems/UltrasonicSensor.h"
-#include "Subsystems/FuelIntakeArms.h"
 #include "Subsystems/GearPneumatic.h"
 #include "Subsystems/Indexer.h"
 #include "Subsystems/LauncherPID.h"
@@ -41,7 +40,6 @@ std::unique_ptr<UltrasonicSensor> CommandBase::frontusensor = NULL;
 
 std::unique_ptr<UltrasonicSensor> CommandBase::backusensor = NULL;
 
-std::unique_ptr<FuelIntakeArms> CommandBase::arms = NULL;
 
 std::unique_ptr<GearPneumatic> CommandBase::gearpneumatic = NULL;
 
@@ -66,25 +64,23 @@ void CommandBase::init()
 
 	boilervisioncalculation.reset(new BoilerVisionCalculation());
 
-	climber.reset(new Climber(M4));
+	climber.reset(new Climber(M3));
 
-	roller.reset(new FuelIntakeRoller(M3));
+	roller.reset(new FuelIntakeRoller(M4));
 
-	arms.reset(new FuelIntakeArms(S0, S1));
+	frontusensor.reset(new UltrasonicSensor(A1));
 
-	frontusensor.reset(new UltrasonicSensor(A0));
-	backusensor.reset(new UltrasonicSensor(A1));
+	backusensor.reset(new UltrasonicSensor(A0));
 
-	gearpneumatic.reset(new GearPneumatic(S2, S3));
+	gearpneumatic.reset(new GearPneumatic(S5, S6));
 
-	indexer.reset(new Indexer(M1));
+	indexer.reset(new Indexer(M0));
 
-	launcher.reset(new LauncherPID(M0, D1));
+	launcher.reset(new LauncherPID(M1, D1));
 
 	launcherhood.reset(new LauncherHood(S4));
 
 	oi.reset(new OI());
-	SmartDashboard::PutData(backusensor.get());
 
 
 }

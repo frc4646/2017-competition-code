@@ -11,11 +11,11 @@ void LauncherHood::InitDefaultCommand() {
 	// SetDefaultCommand(new MySpecialCommand());
 }
 
-void LauncherHood::Far() {
+void LauncherHood::Extend() {
 	piston.Set(true);
 }
 
-void LauncherHood::Close() {
+void LauncherHood::Retract() {
 	piston.Set(false);
 }
 // Put methods for controlling this subsystem

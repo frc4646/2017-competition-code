@@ -13,7 +13,7 @@ void HoodFarCommand::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void HoodFarCommand::Execute() {
-	launcherhood->Far();
+	launcherhood->Extend();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -23,7 +23,7 @@ bool HoodFarCommand::IsFinished() {
 
 // Called once after isFinished returns true
 void HoodFarCommand::End() {
-	launcherhood->Close();
+
 }
 
 // Called when another command which requires one or more of the same

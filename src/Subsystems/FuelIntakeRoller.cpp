@@ -8,7 +8,7 @@ FuelIntakeRoller::FuelIntakeRoller(MotorPin rollerPin) :
 Subsystem("ExampleSubsystem"),
 roller(rollerPin)
 {
-
+	roller.SetInverted(true);
 }
 
 void FuelIntakeRoller::InitDefaultCommand() {

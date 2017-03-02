@@ -18,8 +18,6 @@ private:
 	JoystickButton boilerDistance;
 	JoystickButton boilerAngle;
 	JoystickButton driveStraight;
-	JoystickButton extendArms;
-	JoystickButton retractArms;
 	JoystickButton hoodArc;
 	JoystickButton hoodKey;
 	JoystickButton shoot;

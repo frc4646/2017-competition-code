@@ -1,34 +1,33 @@
-#include "ArmRetractCommand.h"
-#include "WPILib.h"
+#include "SendUltrasonic.h"
 
-ArmRetractCommand::ArmRetractCommand() {
+SendUltrasonic::SendUltrasonic() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	Requires(arms.get());
+	Requires(backusensor.get());
 }
 
 // Called just before this Command runs the first time
-void ArmRetractCommand::Initialize() {
+void SendUltrasonic::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void ArmRetractCommand::Execute() {
-	arms->ArmRetract();
+void SendUltrasonic::Execute() {
+	backusensor->SendSD();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool ArmRetractCommand::IsFinished() {
+bool SendUltrasonic::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void ArmRetractCommand::End() {
-	arms->Stop();
+void SendUltrasonic::End() {
+
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void ArmRetractCommand::Interrupted() {
-	arms->Stop();
+void SendUltrasonic::Interrupted() {
+
 }

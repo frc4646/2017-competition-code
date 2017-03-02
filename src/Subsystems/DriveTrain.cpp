@@ -48,7 +48,7 @@ void DriveTrain::StraightDrive(double power) {
 }
 
 double DriveTrain::GetHeading() {
-	return Gyro.GetAngle();
+	return -Gyro.GetAngle();
 }
 
 void DriveTrain::ResetGyro(){

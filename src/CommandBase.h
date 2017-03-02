@@ -14,7 +14,6 @@
 #include "Subsystems/Climber.h"
 #include "Subsystems/FuelIntakeRoller.h"
 #include "Subsystems/UltrasonicSensor.h"
-#include "Subsystems/FuelIntakeArms.h"
 #include "Subsystems/GearPneumatic.h"
 #include "Subsystems/Indexer.h"
 #include "Subsystems/LauncherPID.h"
@@ -43,7 +42,6 @@ public:
 	static std::unique_ptr<FuelIntakeRoller> roller;
 	static std::unique_ptr<UltrasonicSensor> frontusensor;
 	static std::unique_ptr<UltrasonicSensor> backusensor;
-	static std::unique_ptr<FuelIntakeArms> arms;
 	static std::unique_ptr<GearPneumatic> gearpneumatic;
 	static std::unique_ptr<Indexer> indexer;
 	static std::unique_ptr<LauncherPID> launcher;

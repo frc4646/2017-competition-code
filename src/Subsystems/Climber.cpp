@@ -8,7 +8,7 @@ Climber::Climber(MotorPin climberPin) :
 Subsystem("ExampleSubsystem"),
 climber(climberPin)
 {
-
+climber.SetInverted(true);
 }
 
 void Climber::InitDefaultCommand() {

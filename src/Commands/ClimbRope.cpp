@@ -14,7 +14,7 @@ void ClimbRope::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ClimbRope::Execute() {
-	climber->SetSpeed(.5);
+	climber->SetSpeed(.75);
 }
 
 // Make this return true when this Command no longer needs to run execute()

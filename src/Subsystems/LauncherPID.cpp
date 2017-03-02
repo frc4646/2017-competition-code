@@ -18,6 +18,7 @@ pidEncoder(counterPin)
 	SetAbsoluteTolerance(.05);
 	SetPIDSourceType(PIDSourceType::kDisplacement);
 	pidEncoder.SetSamplesToAverage(1);
+	pidMotor.SetInverted(true);
 }
 
 double LauncherPID::ReturnPIDInput() {

@@ -1,13 +1,17 @@
 #include "OI.h"
 #include "Commands/DriveStraight.h"
 #include "Commands/TurnForAngle.h"
-#include "Commands/ArmExtendCommand.h"
-#include "Commands/ArmRetractCommand.h"
-#include "Commands/GearDrop.h"
+#include "Commands/GearCenter.h"
 #include "Commands/ClimbRope.h"
 #include "Commands/IntakeCommand.h"
 #include "Commands/BoilerCenter.h"
 #include "Commands/BoilerDistance.h"
+#include "Commands/Index.h"
+#include "Commands/GearExtendCommand.h"
+#include "Commands/GearRetractCommand.h"
+#include "Commands/ManualLaunchCommand.h"
+#include "Commands/HoodFarCommand.h"
+#include "Commands/HoodCloseCommand.h"
 
 #include <WPILib.h>
 
@@ -19,8 +23,6 @@ autoGearDrop(&left, 1),
 boilerDistance(&left, 2),
 boilerAngle(&right, 2),
 driveStraight(&right, 1),
-extendArms(&mechanism, 6),
-retractArms(&mechanism, 4),
 hoodArc(&mechanism, 5),
 hoodKey(&mechanism, 3),
 shoot(&mechanism, 1),
@@ -29,21 +31,27 @@ intakeOn(&mechanism, 9),
 intakeOff(&mechanism, 10),
 indexerOn(&mechanism, 7),
 indexerOff(&mechanism, 8),
-extendGear(&mechanism, 11),
-retractGear(&mechanism, 12)
+extendGear(&mechanism, 6),
+retractGear(&mechanism, 4)
 
 //turn90(&left, 2)
 {
 	// Process operator interface input here.
 	driveStraight.WhileHeld(new DriveStraight());
-	extendArms.WhenPressed(new ArmExtendCommand());
-	retractArms.WhenPressed(new ArmRetractCommand());
-	autoGearDrop.WhenPressed(new GearDrop());
+	autoGearDrop.WhileHeld(new GearCenter());
 	climb.WhileHeld(new ClimbRope());
-	intakeOn.WhenPressed(new IntakeCommand(0.5));
-	intakeOff.WhenPressed(new IntakeCommand(0));
+	intakeOn.WhileHeld(new IntakeCommand(1));
+	intakeOff.WhileHeld(new IntakeCommand(-0.5));
 	boilerAngle.WhileHeld(new BoilerCenter());
 	boilerDistance.WhileHeld(new BoilerDistance());
+	indexerOn.WhileHeld(new Index(0.75));
+	indexerOff.WhileHeld(new Index(-0.75));
+	extendGear.WhileHeld(new GearExtendCommand());
+	retractGear.WhileHeld(new GearRetractCommand());
+	shoot.WhileHeld(new ManualLaunchCommand(1));
+	hoodArc.WhenPressed(new HoodFarCommand());
+	hoodKey.WhenPressed(new HoodCloseCommand());
+
 	//turn90.WhenPressed(new TurnForAngle(0.5,90));
 }
 Joystick& OI::GetLeftStick() {

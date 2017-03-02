@@ -14,8 +14,8 @@ private:
 public:
 	LauncherHood(SolenoidPin pin);
 	void InitDefaultCommand();
-	void Far();
-	void Close();
+	void Extend();
+	void Retract();
 };
 
 #endif  // LauncherHood_H
