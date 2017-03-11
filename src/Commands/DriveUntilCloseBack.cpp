@@ -20,10 +20,10 @@ void DriveUntilCloseBack::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void DriveUntilCloseBack::Execute() {
 	drivetrain->StraightDrive(drivePower);
-	SmartDashboard::PutNumber("Ultrasonic",backusensor->GetDistance());
-	if(backusensor->GetDistance() < targetDistance){
-		confidence++;
-	}
+//	SmartDashboard::PutNumber("Ultrasonic",backusensor->GetDistance());
+//	if(backusensor->GetDistance() < targetDistance){
+//		confidence++;
+//	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

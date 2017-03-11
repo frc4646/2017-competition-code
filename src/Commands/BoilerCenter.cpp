@@ -12,13 +12,14 @@ robotTurn(0),
 confidence(0),
 po(),
 ps(boilervisioncalculation.get()),
-pc(0,0,0,&ps,&po, 0.05)
+pc(0.5,0,0,&ps,&po, 0.05)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	SmartDashboard::PutData("BoilerCenter", &pc);
 	Requires(boilervisioncalculation.get());
 	Requires(drivetrain.get());
+	LiveWindow::GetInstance()->AddActuator("BiolerPID", "Align", pc);
 }
 
 // Called just before this Command runs the first time
@@ -43,6 +44,7 @@ void BoilerCenter::Execute() {
 	{
 		robotTurn -= deadband;
 	}
+	SmartDashboard::PutNumber("BoilerCenterOutput", robotTurn);
 	drivetrain->SetDrive(robotTurn, 1);
 }
 

@@ -12,13 +12,14 @@ robotTurn(0),
 confidence(0),
 po(),
 ps(gearvisioncalculation.get()),
-pc(1,0,0,&ps,&po, 0.05)
+pc(0.25,0.25,0,&ps,&po, 0.05)
 {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	SmartDashboard::PutData("GearCenter", &pc);
 	Requires(gearvisioncalculation.get());
 	Requires(drivetrain.get());
+	LiveWindow::GetInstance()->AddActuator("GearPID", "Align", pc);
 }
 
 // Called just before this Command runs the first time
@@ -34,7 +35,7 @@ void GearCenter::Initialize() {
 void GearCenter::Execute() {
 	robotTurn = pc.Get();
 	SmartDashboard::PutNumber("Turn Power", robotTurn);
-	const float deadband = 0.25;
+	const float deadband = 0.3;
 
 	if(robotTurn > 0)
 	{

@@ -2,7 +2,7 @@
 #include "../RobotMap.h"
 
 BoilerVisionCalculation::BoilerVisionCalculation() : Subsystem("BoilerVisionCalculation"), goalX(0) {
-	networkTable = NetworkTable::GetTable("othervision/targets");
+	networkTable = NetworkTable::GetTable("vision/targets_Front");
 }
 
 BoilerVisionCalculation::~BoilerVisionCalculation()

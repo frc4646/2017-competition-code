@@ -17,6 +17,7 @@ pc(0,0,0,&ps,&po, 0.05){
 	SmartDashboard::PutData("BoilerDistance", &pc);
 	Requires(boilervisioncalculation.get());
 	Requires(drivetrain.get());
+	LiveWindow::GetInstance()->AddActuator("BoilerPID", "Dist", pc);
 }
 
 // Called just before this Command runs the first time
