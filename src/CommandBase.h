@@ -14,6 +14,7 @@
 #include "Subsystems/Climber.h"
 #include "Subsystems/FuelIntakeRoller.h"
 #include "Subsystems/UltrasonicSensor.h"
+#include "Subsystems/RadioShackUltrasonic.h"
 #include "Subsystems/GearPneumatic.h"
 #include "Subsystems/Indexer.h"
 #include "Subsystems/LauncherPID.h"

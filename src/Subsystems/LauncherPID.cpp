@@ -6,7 +6,7 @@
 #include "../RobotMap.h"
 
 LauncherPID::LauncherPID(MotorPin launcherPin, DIOPin counterPin) :
-PIDSubsystem("LauncherPID", 1.0, 0.0, 0.0),
+PIDSubsystem("LauncherPID", 2.5, 0.25, -0.5),
 pidMotor(launcherPin),
 pidEncoder(counterPin)
 {
@@ -19,6 +19,7 @@ pidEncoder(counterPin)
 	SetPIDSourceType(PIDSourceType::kDisplacement);
 	pidEncoder.SetSamplesToAverage(1);
 	pidMotor.SetInverted(true);
+	LiveWindow::GetInstance()->AddActuator("Launcher","PIDController", GetPIDController());
 }
 
 double LauncherPID::ReturnPIDInput() {
@@ -26,6 +27,7 @@ double LauncherPID::ReturnPIDInput() {
 	// e.g. a sensor, like a potentiometer:
 	// yourPot->SetAverageVoltage() / kYourMaxVoltage;
 	double speed = (1.0/(pidEncoder.GetPeriod()))*60.0;
+	SmartDashboard::PutNumber("RPMS", speed);
 	return speed/5000;
 }
 

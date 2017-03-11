@@ -23,7 +23,7 @@ GearDrop::GearDrop() {
 	// arm.
 	AddSequential(new GearCenter());
 	AddSequential(new GearCenter());
-	AddSequential(new DriveUntilCloseBack(0.3,20));
+	AddSequential(new DriveUntilCloseBack(0.3,6));
 	AddSequential(new GearExtendCommand());
 	AddSequential((new SetDriveCommand(-0.5, 0)),0.5);
 	AddSequential((new SetDriveCommand(0, 0)),0.2);
