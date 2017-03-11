@@ -2,20 +2,21 @@
 #define RadioShackUltrasonic_H
 
 #include <Commands/Subsystem.h>
-#include "Ultrasonic.h"
-#include "Counter.h"
+#include "WPILib.h"
+#include "PinEnums.h"
 
-class RadioShackUltrasonic : public Subsystem {
+class RadioShackUltrasonic : public frc::Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	std::unique_ptr<frc::Counter> foo;
+//	Ultrasonic USensor;
+	DigitalOutput dio;
+	Counter cou;
+	std::shared_ptr<NetworkTable> networkTable;
 public:
-	RadioShackUltrasonic(int pin);
+	RadioShackUltrasonic(DIOPin Upin, DIOPin Upin2);
 	void InitDefaultCommand();
-
 	double GetDistance();
 	void SendSD();
 };
-
-#endif  // RadioShackUltrasonic_H
+#endif  // RADIOSHACKULTRASONIC_H

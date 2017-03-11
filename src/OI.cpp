@@ -1,7 +1,7 @@
 #include "OI.h"
 #include "Commands/DriveStraight.h"
 #include "Commands/TurnForAngle.h"
-#include "Commands/GearCenter.h"
+#include "Commands/GearDrop.h"
 #include "Commands/ClimbRope.h"
 #include "Commands/IntakeCommand.h"
 #include "Commands/BoilerCenter.h"
@@ -12,6 +12,8 @@
 #include "Commands/ManualLaunchCommand.h"
 #include "Commands/HoodFarCommand.h"
 #include "Commands/HoodCloseCommand.h"
+#include "Commands/DriveUntilCloseBack.h"
+#include "Commands/SpinUp.h"
 
 #include <WPILib.h>
 
@@ -38,8 +40,8 @@ retractGear(&mechanism, 4)
 {
 	// Process operator interface input here.
 	driveStraight.WhileHeld(new DriveStraight());
-	autoGearDrop.WhileHeld(new GearCenter());
-	climb.WhileHeld(new ClimbRope());
+	autoGearDrop.WhenPressed(new DriveUntilCloseBack(0.3,6));
+	climb.WhileHeld(new ManualLaunchCommand(1));
 	intakeOn.WhileHeld(new IntakeCommand(1));
 	intakeOff.WhileHeld(new IntakeCommand(-0.5));
 	boilerAngle.WhileHeld(new BoilerCenter());
@@ -48,7 +50,8 @@ retractGear(&mechanism, 4)
 	indexerOff.WhileHeld(new Index(-0.75));
 	extendGear.WhileHeld(new GearExtendCommand());
 	retractGear.WhileHeld(new GearRetractCommand());
-	shoot.WhileHeld(new ManualLaunchCommand(1));
+	shoot.WhileHeld(new SpinUp(0.5));
+	shoot.WhenReleased(new SpinUp(0));
 	hoodArc.WhenPressed(new HoodFarCommand());
 	hoodKey.WhenPressed(new HoodCloseCommand());
 

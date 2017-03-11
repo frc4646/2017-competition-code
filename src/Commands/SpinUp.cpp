@@ -1,7 +1,7 @@
 #include "SpinUp.h"
 
 SpinUp::SpinUp(double speed)
-	:launchSpeed(speed){
+	:launchSpeed(speed) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	Requires(launcher.get());

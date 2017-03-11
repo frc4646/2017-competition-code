@@ -19,7 +19,7 @@ pidEncoder(counterPin)
 	SetPIDSourceType(PIDSourceType::kDisplacement);
 	pidEncoder.SetSamplesToAverage(1);
 	pidMotor.SetInverted(true);
-	LiveWindow::GetInstance()->AddActuator("Launcher","PidController", GetPIDController());
+	LiveWindow::GetInstance()->AddActuator("Launcher","PIDController", GetPIDController());
 }
 
 double LauncherPID::ReturnPIDInput() {

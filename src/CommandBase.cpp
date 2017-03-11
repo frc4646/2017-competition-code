@@ -7,6 +7,7 @@
 #include "Subsystems/Climber.h"
 #include "Subsystems/FuelIntakeRoller.h"
 #include "Subsystems/UltrasonicSensor.h"
+#include "Subsystems/RadioShackUltrasonic.h"
 #include "Subsystems/GearPneumatic.h"
 #include "Subsystems/Indexer.h"
 #include "Subsystems/LauncherPID.h"
@@ -38,7 +39,7 @@ std::unique_ptr<FuelIntakeRoller> CommandBase::roller = NULL;
 
 std::unique_ptr<UltrasonicSensor> CommandBase::frontusensor = NULL;
 
-std::unique_ptr<RadioShackUltrasonic> CommandBase::backusensor = NULL;
+std::unique_ptr<UltrasonicSensor> CommandBase::backusensor = NULL;
 
 
 std::unique_ptr<GearPneumatic> CommandBase::gearpneumatic = NULL;
@@ -70,7 +71,7 @@ void CommandBase::init()
 
 	frontusensor.reset(new UltrasonicSensor(A1));
 
-	backusensor.reset(new RadioShackUltrasonic(D3));
+	backusensor.reset(new UltrasonicSensor(A0));
 
 	gearpneumatic.reset(new GearPneumatic(S5, S6));
 

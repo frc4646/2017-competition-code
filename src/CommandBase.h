@@ -42,7 +42,7 @@ public:
 	static std::unique_ptr<Climber> climber;
 	static std::unique_ptr<FuelIntakeRoller> roller;
 	static std::unique_ptr<UltrasonicSensor> frontusensor;
-	static std::unique_ptr<RadioShackUltrasonic> backusensor;
+	static std::unique_ptr<UltrasonicSensor> backusensor;
 	static std::unique_ptr<GearPneumatic> gearpneumatic;
 	static std::unique_ptr<Indexer> indexer;
 	static std::unique_ptr<LauncherPID> launcher;
