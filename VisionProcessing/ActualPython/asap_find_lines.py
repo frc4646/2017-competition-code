@@ -12,9 +12,10 @@ import socket
 networktableHostname = '10.46.46.2'
 networktablePort = 1735
 cameraHostname = 'localhost'
-cameraPort = 1180
 
+myCameraPort = 1180
 
+myCameraInstance = "Front"
 
 def wait_for_port_open(hostname, portNumber):
     s = socket.socket()
@@ -29,7 +30,7 @@ def wait_for_port_open(hostname, portNumber):
             s.close()
             return
 
-def extra_processing(pipeline):
+def extra_processing(pipeline, CAMERA_INSTANCE):
     """
     Performs extra processing on the pipeline's outputs and publishes data to NetworkTables.
     :param pipeline: the pipeline that just processed an image
@@ -49,14 +50,14 @@ def extra_processing(pipeline):
         heights.append(h)
 
     # Publish to the '/vision/red_areas' network table
-    table = NetworkTables.getTable('/vision/targets')
+    table = NetworkTables.getTable('/vision/targets_%s' % CAMERA_INSTANCE)
     table.putNumberArray('centerX', center_x_positions)
     table.putNumberArray('centerY', center_y_positions)
     table.putNumberArray('width', widths)
     table.putNumberArray('height', heights)
 
 
-def main():
+def main(cameraPort, CAMERA_INSTANCE):
     print('Waiting on network tables')
     wait_for_port_open(networktableHostname, networktablePort)
     print('Network tables available')
@@ -68,7 +69,7 @@ def main():
     NetworkTables.setClientMode()
     NetworkTables.setIPAddress(networktableHostname)
     NetworkTables.initialize()
-    table = NetworkTables.getTable('/vision/diagnostic')
+    table = NetworkTables.getTable('/vision/diagnostic_%s' % CAMERA_INSTANCE)
 
 
     print('Creating video capture')
@@ -89,8 +90,8 @@ def main():
         if have_frame:
             frame_start = time.time()
             pipeline.process(frame)
-            extra_processing(pipeline)
-            frame_end = time.time()
+            extra_processing(pipeline, CAMERA_INSTANCE)
+			frame_end = time.time()
             frame_interval = frame_start - previous_frame_time
             frame_rate = 1 / (frame_interval)
             frame_time = frame_end - frame_start
@@ -105,4 +106,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(myCameraPort, myCameraInstance)
