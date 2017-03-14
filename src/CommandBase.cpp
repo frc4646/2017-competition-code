@@ -12,6 +12,7 @@
 #include "Subsystems/Indexer.h"
 #include "Subsystems/LauncherPID.h"
 #include "Subsystems/LauncherHood.h"
+#include "Subsystems/PressureSensor.h"
 
 
 // Initialize a single static instance of all of your subsystems. The following
@@ -50,6 +51,8 @@ std::unique_ptr<Indexer> CommandBase::indexer = NULL;
 
 std::unique_ptr<LauncherHood> CommandBase::launcherhood = NULL;
 
+std::unique_ptr<PressureSensor> CommandBase::psensor = NULL;
+
 CommandBase::CommandBase(const std::string &name) :
 		frc::Command(name) {
 
@@ -80,6 +83,8 @@ void CommandBase::init()
 	launcher.reset(new LauncherPID(M1, D1));
 
 	launcherhood.reset(new LauncherHood(S4));
+
+	psensor.reset(new PressureSensor(A2));
 
 	oi.reset(new OI());
 

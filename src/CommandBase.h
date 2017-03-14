@@ -19,6 +19,7 @@
 #include "Subsystems/Indexer.h"
 #include "Subsystems/LauncherPID.h"
 #include "Subsystems/LauncherHood.h"
+#include "Subsystems/PressureSensor.h"
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
  * CommandBase stores creates and stores each control system. To access a
@@ -47,6 +48,7 @@ public:
 	static std::unique_ptr<Indexer> indexer;
 	static std::unique_ptr<LauncherPID> launcher;
 	static std::unique_ptr<LauncherHood> launcherhood;
+	static std::unique_ptr<PressureSensor> psensor;
 };
 
 #endif  // COMMAND_BASE_H
