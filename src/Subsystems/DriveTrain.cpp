@@ -38,7 +38,6 @@ void DriveTrain::SetDrive(double power, double curve) {
 void DriveTrain::StraightDrive(double power) {
 	double gyroCurve = GetHeading()/90.0;
 	double robotPower = power;
-	std::cout << "Robot Curve is " << gyroCurve << " Robot power is " << robotPower << std::endl;
 	if (robotPower > 0) {
 		SetDrive(robotPower, -gyroCurve);
 	}

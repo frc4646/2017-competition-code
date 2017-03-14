@@ -4,11 +4,10 @@
 
 #include <unistd.h>
 
-RadioShackUltrasonic::RadioShackUltrasonic(DIOPin Upin, DIOPin Upin2) :
+RadioShackUltrasonic::RadioShackUltrasonic(DIOPin Upin) :
 frc::Subsystem("ExampleSubsystem"),
 //USensor(Upin,Upin2)
-dio(Upin),
-cou(Upin2)
+cou(Upin)
 {
 //	USensor.SetAutomaticMode(true);
 	networkTable = NetworkTable::GetTable("ultrasonic");
@@ -38,12 +37,12 @@ double RadioShackUltrasonic::GetDistance() {
 //		std::cout << cou.GetPeriod() << std::endl;
 //	}
 	return cou.GetPeriod();
+			//*62500;
 
 }
 
 void RadioShackUltrasonic::SendSD() {
 	SmartDashboard::PutNumber("UltrasonicDistance", GetDistance());
-	std::cout << "Ultrasonic sending " << GetDistance() << std::endl;
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

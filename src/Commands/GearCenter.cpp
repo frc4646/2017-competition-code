@@ -35,7 +35,7 @@ void GearCenter::Initialize() {
 void GearCenter::Execute() {
 	robotTurn = pc.Get();
 	SmartDashboard::PutNumber("Turn Power", robotTurn);
-	const float deadband = 0.3;
+	const float deadband = 0.1;
 
 	if(robotTurn > 0)
 	{

@@ -18,8 +18,10 @@ pidEncoder(counterPin)
 	SetAbsoluteTolerance(.05);
 	SetPIDSourceType(PIDSourceType::kDisplacement);
 	pidEncoder.SetSamplesToAverage(1);
+
 	pidMotor.SetInverted(true);
 	LiveWindow::GetInstance()->AddActuator("Launcher","PIDController", GetPIDController());
+	frc::SmartDashboard::PutData("LauncherPID", this);
 }
 
 double LauncherPID::ReturnPIDInput() {
@@ -34,6 +36,7 @@ double LauncherPID::ReturnPIDInput() {
 void LauncherPID::UsePIDOutput(double output) {
 	// Use output to drive your system, like a motor
 	// e.g. yourMotor->Set(output);
+	SmartDashboard::PutNumber("PIDCommand", output);
 	pidMotor.PIDWrite(output);
 }
 
@@ -45,6 +48,9 @@ void LauncherPID::Manual()
 
 void LauncherPID::SetManual(double power)
 {
+	double speed = (1.0/(pidEncoder.GetPeriod()))*60.0;
+	SmartDashboard::PutNumber("RPMS_2", speed);
+
 	pidMotor.Set(power);
 }
 

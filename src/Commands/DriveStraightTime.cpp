@@ -11,7 +11,7 @@ DriveStraightTime::DriveStraightTime(double speed)
 
 // Called just before this Command runs the first time
 void DriveStraightTime::Initialize() {
-
+	drivetrain->ResetGyro();
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -15,15 +15,16 @@ confidence(0)
 // Called just before this Command runs the first time
 void DriveUntilCloseBack::Initialize() {
 	confidence = 0;
+	drivetrain->ResetGyro();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveUntilCloseBack::Execute() {
-	drivetrain->StraightDrive(drivePower);
-//	SmartDashboard::PutNumber("Ultrasonic",backusensor->GetDistance());
-//	if(backusensor->GetDistance() < targetDistance){
-//		confidence++;
-//	}
+	drivetrain->StraightDrive(-drivePower);
+	SmartDashboard::PutNumber("Ultrasonic",backusensor->GetDistance());
+	if(backusensor->GetDistance() < targetDistance){
+		confidence++;
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

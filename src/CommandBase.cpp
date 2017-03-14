@@ -39,7 +39,7 @@ std::unique_ptr<FuelIntakeRoller> CommandBase::roller = NULL;
 
 std::unique_ptr<UltrasonicSensor> CommandBase::frontusensor = NULL;
 
-std::unique_ptr<UltrasonicSensor> CommandBase::backusensor = NULL;
+std::unique_ptr<RadioShackUltrasonic> CommandBase::backusensor = NULL;
 
 
 std::unique_ptr<GearPneumatic> CommandBase::gearpneumatic = NULL;
@@ -71,7 +71,7 @@ void CommandBase::init()
 
 	frontusensor.reset(new UltrasonicSensor(A1));
 
-	backusensor.reset(new UltrasonicSensor(A0));
+	backusensor.reset(new RadioShackUltrasonic(D3));
 
 	gearpneumatic.reset(new GearPneumatic(S5, S6));
 

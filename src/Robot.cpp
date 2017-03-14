@@ -10,6 +10,8 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 
+#include <AutoCommands/KeyShotAuto.h>
+
 class Robot: public frc::IterativeRobot {
 public:
 	void RobotInit() override {
@@ -70,7 +72,7 @@ public:
 
 //		autonomousCommand.reset(chooser.GetSelected());
 
-
+		autonomousCommand.reset(new KeyShotAuto());
 
 		if (autonomousCommand.get() != nullptr) {
 			autonomousCommand->Start();

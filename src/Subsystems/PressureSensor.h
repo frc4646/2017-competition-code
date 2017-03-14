@@ -1,21 +1,23 @@
-#ifndef RadioShackUltrasonic_H
-#define RadioShackUltrasonic_H
+#ifndef PressureSensor_H
+#define PressureSensor_H
 
 #include <Commands/Subsystem.h>
 #include "WPILib.h"
 #include "PinEnums.h"
 
-class RadioShackUltrasonic : public frc::Subsystem {
+class PressureSensor : public Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-//	Ultrasonic USensor;
-	Counter cou;
+	std::unique_ptr<AnalogInput> PSensor;
 	std::shared_ptr<NetworkTable> networkTable;
+
 public:
-	RadioShackUltrasonic(DIOPin Upin);
+	PressureSensor(AnalogPin PPin);
 	void InitDefaultCommand();
-	double GetDistance();
+	double GetVoltage();
+	double GetPressure();
 	void SendSD();
 };
-#endif  // RADIOSHACKULTRASONIC_H
+
+#endif  // PressureSensor_H

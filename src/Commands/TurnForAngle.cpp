@@ -21,9 +21,9 @@ void TurnForAngle::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void TurnForAngle::Execute() {
 	drive = power* abs(drivetrain->GetHeading()-angle)/initDif;
-	if (drive < .2)
+	if (drive < .3)
 	{
-		drive = .2;
+		drive = .3;
 	}
 
 	if(drive > 0.5)
