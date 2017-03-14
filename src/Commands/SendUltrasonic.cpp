@@ -14,6 +14,7 @@ void SendUltrasonic::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void SendUltrasonic::Execute() {
 	backusensor->SendSD();
+	psensor->SendSD();
 }
 
 // Make this return true when this Command no longer needs to run execute()
