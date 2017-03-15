@@ -1,6 +1,9 @@
 #include "BlueGearCenterAuto.h"
 #include <Commands/DriveUntilCloseBack.h>
 #include <Commands/DriveUntilFarBack.h>
+#include "Commands/GearExtendCommand.h"
+#include "Commands/GearRetractCommand.h"
+#include "Commands/DriveStraightTime.h"
 #include "Commands/GearDrop.h"
 
 BlueGearCenterAuto::BlueGearCenterAuto() {
@@ -23,4 +26,9 @@ BlueGearCenterAuto::BlueGearCenterAuto() {
 //AddSequential(new DriveUntilCloseBack(.75, 10));
 //AddSequential(new GearDrop);
 //AddSequential(new DriveUntilFarBack(.75,10));
+	AddSequential(new DriveUntilCloseBack(0.3, 4), 5);
+	AddSequential(new GearExtendCommand(), 0.75);
+	AddSequential(new DriveStraightTime(0.5), 1);
+	AddSequential(new GearRetractCommand(), 0.5);
+
 }

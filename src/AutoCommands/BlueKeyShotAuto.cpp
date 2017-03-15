@@ -1,10 +1,12 @@
-#include "KeyShotAuto.h"
+#include "BlueKeyShotAuto.h"
 #include <Commands/DriveStraightTime.h>
 #include <Commands/TurnForAngle.h>
 #include <Commands/ManualLaunchCommand.h>
 #include <Commands/Index.h>
 
-KeyShotAuto::KeyShotAuto() {
+
+//These values mostly correct for turning
+BlueKeyShotAuto::BlueKeyShotAuto() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -31,7 +33,7 @@ KeyShotAuto::KeyShotAuto() {
 
 	AddParallel(new Index(0));
 	AddSequential(new DriveStraightTime(-.75), .25);
-	AddSequential(new TurnForAngle(.75, 45), 1);
+	AddSequential(new TurnForAngle(.75, -80), 1.5);
 	AddSequential(new DriveStraightTime(-.75), 1.5);
 
 }

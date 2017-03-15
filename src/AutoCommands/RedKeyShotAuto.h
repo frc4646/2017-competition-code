@@ -3,9 +3,9 @@
 
 #include <Commands/CommandGroup.h>
 
-class KeyShotAuto : public CommandGroup {
+class RedKeyShotAuto : public CommandGroup {
 public:
-	KeyShotAuto();
+	RedKeyShotAuto();
 };
 
 #endif  // KeyShotAuto_H

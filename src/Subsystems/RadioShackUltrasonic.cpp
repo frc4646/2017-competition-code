@@ -36,7 +36,7 @@ double RadioShackUltrasonic::GetDistance() {
 //	{
 //		std::cout << cou.GetPeriod() << std::endl;
 //	}
-	return cou.GetPeriod();
+	return cou.GetPeriod() * 62500;
 			//*62500;
 
 }

@@ -10,31 +10,27 @@
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
 
-#include <AutoCommands/KeyShotAuto.h>
+#include <AutoCommands/DoNothingAuto.h>
+#include <AutoCommands/BlueGearCenterAuto.h>
+#include <AutoCommands/RedKeyShotAuto.h>
+#include <AutoCommands/BlueKeyShotAuto.h>
 
 class Robot: public frc::IterativeRobot {
 public:
+	enum AutoChoice {
+		noAuto, gearDrop, keyShot
+	};
 	void RobotInit() override {
 		CommandBase::init();
 
-		chooser.AddDefault("Default Auto", new ExampleCommand());
+		chooser.AddDefault("Do Nothing", new AutoChoice(noAuto));
+		chooser.AddObject("Gear Drop", new AutoChoice(gearDrop));
+		chooser.AddObject("Key Shot", new AutoChoice(keyShot));
 		Compressor *c = new Compressor(0);
 		c->Start();
-//		DriverStation& ds = DriverStation::GetInstance();
-//		DriverStation::Alliance alliance = ds.GetAlliance();
-		/*if(alliance == DriverStation::Alliance::kBlue){
-			// chooser.AddObject("Blue Auto", new MyAutoCommand());
-		}
-		if(alliance == DriverStation::Alliance::kRed){
-			// chooser.AddObject("Red Auto", new MyAutoCommand());
-		}
-		else{
-			// chooser.AddObject("Blue Auto", new MyAutoCommand());
-			// chooser.AddObject("Red Auto", new MyAutoCommand());
-		}
 
 		frc::SmartDashboard::PutData("Auto Modes", &chooser);
-		frc::SmartDashboard::PutData(frc::Scheduler::GetInstance());*/
+		frc::SmartDashboard::PutData(frc::Scheduler::GetInstance());
 	}
 
 	/**
@@ -62,17 +58,27 @@ public:
 	 * to the if-else structure below with additional strings & commands.
 	 */
 	void AutonomousInit() override {
-		/* std::string autoSelected = frc::SmartDashboard::GetString("Auto Selector", "Default");
-		if (autoSelected == "My Auto") {
-			autonomousCommand.reset(new MyAutoCommand());
+		DriverStation& ds = DriverStation::GetInstance();
+		DriverStation::Alliance alliance = ds.GetAlliance();
+		if(chooser.GetSelected())
+		{
+			switch(*chooser.GetSelected())
+			{
+			case noAuto:
+				autonomousCommand.reset(new DoNothingAuto());
+				break;
+			case gearDrop:
+				autonomousCommand.reset(new BlueGearCenterAuto());
+				break;
+			case keyShot:
+				if(alliance == DriverStation::Alliance::kRed){
+					autonomousCommand.reset(new RedKeyShotAuto());
+				} else {
+					autonomousCommand.reset (new BlueKeyShotAuto());
+				}
+				break;
+			}
 		}
-		else {
-			autonomousCommand.reset(new ExampleCommand());
-		} */
-
-//		autonomousCommand.reset(chooser.GetSelected());
-
-		autonomousCommand.reset(new KeyShotAuto());
 
 		if (autonomousCommand.get() != nullptr) {
 			autonomousCommand->Start();
@@ -103,7 +109,7 @@ public:
 
 private:
 	std::unique_ptr<frc::Command> autonomousCommand;
-	frc::SendableChooser<frc::Command*> chooser;
+	frc::SendableChooser<AutoChoice*> chooser;
 };
 
 START_ROBOT_CLASS(Robot)

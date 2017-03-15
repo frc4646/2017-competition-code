@@ -14,7 +14,6 @@ USensor(new AnalogInput(UPin))
 void UltrasonicSensor::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
-	SetDefaultCommand(new SendUltrasonic());
 }
 
 double UltrasonicSensor::GetVoltage() {
