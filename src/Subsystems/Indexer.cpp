@@ -4,7 +4,7 @@
 Indexer::Indexer(MotorPin indexerPin) : Subsystem("ExampleSubsystem"),
 index(indexerPin)
 {
-	index.SetInverted(true);
+	index.SetInverted(false);
 }
 
 void Indexer::InitDefaultCommand() {

@@ -14,11 +14,12 @@
 #include <AutoCommands/BlueGearCenterAuto.h>
 #include <AutoCommands/RedKeyShotAuto.h>
 #include <AutoCommands/BlueKeyShotAuto.h>
+#include <AutoCommands/DriveToNeutralAuto.h>
 
 class Robot: public frc::IterativeRobot {
 public:
 	enum AutoChoice {
-		noAuto, gearDrop, keyShot
+		noAuto, gearDrop, keyShot, baseline
 	};
 	void RobotInit() override {
 		CommandBase::init();
@@ -26,6 +27,7 @@ public:
 		chooser.AddDefault("Do Nothing", new AutoChoice(noAuto));
 		chooser.AddObject("Gear Drop", new AutoChoice(gearDrop));
 		chooser.AddObject("Key Shot", new AutoChoice(keyShot));
+		chooser.AddObject("Baseline", new AutoChoice(baseline));
 		Compressor *c = new Compressor(0);
 		c->Start();
 
@@ -62,6 +64,7 @@ public:
 		DriverStation::Alliance alliance = ds.GetAlliance();
 		if(chooser.GetSelected())
 		{
+			std::cout << "Choice is " << *chooser.GetSelected() << std::endl;
 			switch(*chooser.GetSelected())
 			{
 			case noAuto:
@@ -72,13 +75,19 @@ public:
 				break;
 			case keyShot:
 				if(alliance == DriverStation::Alliance::kRed){
+					std::cout << "Red alliance" << std::endl;
 					autonomousCommand.reset(new RedKeyShotAuto());
 				} else {
+					std::cout << "Blue alliance" << std::endl;
 					autonomousCommand.reset (new BlueKeyShotAuto());
 				}
 				break;
+			case baseline:
+				autonomousCommand.reset(new DriveToNeutralAuto());
+				break;
 			}
 		}
+
 
 		if (autonomousCommand.get() != nullptr) {
 			autonomousCommand->Start();

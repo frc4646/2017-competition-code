@@ -26,6 +26,7 @@ BlueGearCenterAuto::BlueGearCenterAuto() {
 //AddSequential(new DriveUntilCloseBack(.75, 10));
 //AddSequential(new GearDrop);
 //AddSequential(new DriveUntilFarBack(.75,10));
+	AddSequential(new DriveUntilCloseBack(0.5, 4), 1);
 	AddSequential(new DriveUntilCloseBack(0.3, 4), 5);
 	AddSequential(new GearExtendCommand(), 0.75);
 	AddSequential(new DriveStraightTime(0.5), 1);

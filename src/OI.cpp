@@ -51,9 +51,9 @@ retractGear(&mechanism, 4)
 	indexerOff.WhileHeld(new Index(-0.75));
 	extendGear.WhileHeld(new GearExtendCommand());
 	retractGear.WhileHeld(new GearRetractCommand());
-	shoot.WhileHeld(new ManualLaunchCommand(.78));
-//	shoot.WhenPressed(new SpinUp(0.5));
-//	shoot.WhenReleased(new ManualLaunchCommand(0));
+//	shoot.WhileHeld(new ManualLaunchCommand(.78));
+	shoot.WhenPressed(new SpinUp(0.82));
+	shoot.WhenReleased(new ManualLaunchCommand(0));
 	hoodArc.WhenPressed(new HoodFarCommand());
 	hoodKey.WhenPressed(new HoodCloseCommand());
 

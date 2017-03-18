@@ -3,6 +3,7 @@
 #include <Commands/TurnForAngle.h>
 #include <Commands/ManualLaunchCommand.h>
 #include <Commands/Index.h>
+#include "Commands/SpinUp.h"
 
 RedKeyShotAuto::RedKeyShotAuto() {
 	// Add Commands here:
@@ -22,12 +23,14 @@ RedKeyShotAuto::RedKeyShotAuto() {
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 
-//	AddSequential(new DriveStraightTime(0.75), 0.5);
-//	AddSequential(new TurnForAngle(0.75, -125));
-//	AddSequential(new DriveStraightTime(0.75), 0.5);
-	AddSequential(new ManualLaunchCommand(0.78), 0.5);
-	AddParallel(new Index(0.75));
-	AddSequential(new ManualLaunchCommand(0.78), 10);
+//	AddSequential(new ManualLaunchCommand(0.78), 0.5);
+//	AddParallel(new Index(0.75));
+//	AddSequential(new ManualLaunchCommand(0.78), 10);
+
+	AddSequential(new SpinUp(0.82), 0.5);
+	AddSequential(new Index(0.75), 10);
+	AddSequential(new ManualLaunchCommand(0), .001);
+
 
 	AddParallel(new Index(0));
 	AddSequential(new DriveStraightTime(-.75), .25);

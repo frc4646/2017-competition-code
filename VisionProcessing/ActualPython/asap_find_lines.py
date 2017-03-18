@@ -13,7 +13,7 @@ networktableHostname = '10.46.46.2'
 networktablePort = 1735
 cameraHostname = 'localhost'
 
-myCameraPort = 1180
+myCameraPort = 5801
 
 myCameraInstance = "Front"
 

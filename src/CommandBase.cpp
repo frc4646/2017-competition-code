@@ -80,7 +80,7 @@ void CommandBase::init()
 
 	indexer.reset(new Indexer(M0));
 
-	launcher.reset(new LauncherPID(M1, D1));
+	launcher.reset(new LauncherPID(M1, D0));
 
 	launcherhood.reset(new LauncherHood(S4));
 

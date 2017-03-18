@@ -3,6 +3,7 @@
 #include <Commands/TurnForAngle.h>
 #include <Commands/ManualLaunchCommand.h>
 #include <Commands/Index.h>
+#include "Commands/SpinUp.h"
 
 
 //These values mostly correct for turning
@@ -24,16 +25,19 @@ BlueKeyShotAuto::BlueKeyShotAuto() {
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
 
-//	AddSequential(new DriveStraightTime(0.75), 0.5);
-//	AddSequential(new TurnForAngle(0.75, -125));
-//	AddSequential(new DriveStraightTime(0.75), 0.5);
-	AddSequential(new ManualLaunchCommand(0.78), 0.5);
-	AddParallel(new Index(0.75));
-	AddSequential(new ManualLaunchCommand(0.78), 10);
+//	AddSequential(new SpinUp(0.84), 0.5);
+//	AddParallel(new Index(0.75));
+//	AddSequential(new SpinUp(0.84), 8);
+
+	AddSequential(new SpinUp(0.82), 0.5);
+	AddSequential(new Index(0.75), 8);
+	AddSequential(new ManualLaunchCommand(0), .001);
+
+
 
 	AddParallel(new Index(0));
 	AddSequential(new DriveStraightTime(-.75), .25);
-	AddSequential(new TurnForAngle(.75, -80), 1.5);
+	AddSequential(new TurnForAngle(.75, -120), 3);
 	AddSequential(new DriveStraightTime(-.75), 1.5);
 
 }
