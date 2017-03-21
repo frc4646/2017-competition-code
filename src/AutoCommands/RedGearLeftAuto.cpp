@@ -22,9 +22,10 @@ RedGearLeftAuto::RedGearLeftAuto() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	//AddSequential(new DriveUntilFarFront(.75,75 ));
-//AddSequential(new TurnForAngle(.75, 45)); //Asuming Right=Positive
-//AddSequential(new DriveUntilCloseBack(.5, 15));
-//AddSequential(new GearDrop);
-//AddSequential(new DriveUntilFarBack(.5, 15));
+	AddSequential(new DriveUntilFarFront(.75,75 ), 5);
+	AddSequential(new TurnForAngle(.75, 45), 2); //Asuming Right=Positive
+	AddSequential(new DriveUntilCloseBack(0.5, 4), 1);
+	AddSequential(new DriveUntilCloseBack(0.3, 4), 5);
+	AddSequential(new GearDrop(), 5);
+	AddSequential(new DriveUntilFarBack(.5, 15));
 }

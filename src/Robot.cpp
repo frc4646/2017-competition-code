@@ -15,17 +15,23 @@
 #include <AutoCommands/RedKeyShotAuto.h>
 #include <AutoCommands/BlueKeyShotAuto.h>
 #include <AutoCommands/DriveToNeutralAuto.h>
+#include <AutoCommands/RedGearLeftAuto.h>
+#include <AutoCommands/RedGearRightAuto.h>
+#include <AutoCommands/BlueGearLeftAuto.h>
+#include <AutoCommands/BlueGearRightAuto.h>
 
 class Robot: public frc::IterativeRobot {
 public:
 	enum AutoChoice {
-		noAuto, gearDrop, keyShot, baseline
+		noAuto, gearDrop, gearDropLeft, gearDropRight, keyShot, baseline
 	};
 	void RobotInit() override {
 		CommandBase::init();
 
 		chooser.AddDefault("Do Nothing", new AutoChoice(noAuto));
-		chooser.AddObject("Gear Drop", new AutoChoice(gearDrop));
+		chooser.AddObject("Gear Drop (Center)", new AutoChoice(gearDrop));
+		chooser.AddObject("Gear Drop (Left)", new AutoChoice(gearDropLeft));
+		chooser.AddObject("Gear Drop (Right)", new AutoChoice(gearDropRight));
 		chooser.AddObject("Key Shot", new AutoChoice(keyShot));
 		chooser.AddObject("Baseline", new AutoChoice(baseline));
 		Compressor *c = new Compressor(0);
@@ -72,6 +78,24 @@ public:
 				break;
 			case gearDrop:
 				autonomousCommand.reset(new BlueGearCenterAuto());
+				break;
+			case gearDropLeft:
+				if (alliance == DriverStation::Alliance::kRed) {
+					std::cout << "Red alliance" << std::endl;
+					autonomousCommand.reset(new RedGearLeftAuto());
+				} else {
+					std::cout << "Blue alliance" << std::endl;
+					autonomousCommand.reset(new BlueGearLeftAuto());
+				}
+				break;
+			case gearDropRight:
+				if (alliance == DriverStation::Alliance::kRed) {
+					std::cout << "Red alliance" << std::endl;
+					autonomousCommand.reset(new RedGearRightAuto());
+				}else {
+					std::cout << "Blue alliance" << std::endl;
+					autonomousCommand.reset(new BlueGearRightAuto());
+				}
 				break;
 			case keyShot:
 				if(alliance == DriverStation::Alliance::kRed){

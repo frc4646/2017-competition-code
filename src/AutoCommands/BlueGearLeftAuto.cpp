@@ -1,10 +1,11 @@
-#include "RedGearRightAuto.h"
+#include "BlueGearLeftAuto.h"
 #include <Commands/DriveUntilCloseBack.h>
 #include <Commands/DriveUntilFarFront.h>
 #include "Commands/TurnForAngle.h"
 #include "Commands/GearDrop.h"
 #include "Commands/DriveUntilFarBack.h"
-RedGearRightAuto::RedGearRightAuto() {
+
+BlueGearLeftAuto::BlueGearLeftAuto() {
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -21,8 +22,9 @@ RedGearRightAuto::RedGearRightAuto() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-	AddSequential(new DriveUntilFarFront(.75,75 ), 5);
-	AddSequential(new TurnForAngle(.75, -45), 2); //Assuming Left=Negative
+
+	AddSequential(new DriveUntilFarFront(.75, 75), 5);
+	AddSequential(new TurnForAngle(.75, 45), 2);
 	AddSequential(new DriveUntilCloseBack(0.5, 4), 1);
 	AddSequential(new DriveUntilCloseBack(0.3, 4), 5);
 	AddSequential(new GearDrop(), 5);
