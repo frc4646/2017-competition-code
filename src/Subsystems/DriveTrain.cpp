@@ -22,8 +22,8 @@ void DriveTrain::InitDefaultCommand() {
 	InlineDrive.SetSafetyEnabled(false);
 }
 
-void DriveTrain::HandleDrive(Joystick& left, Joystick& right) {
-	InlineDrive.TankDrive(left.GetRawAxis(1)*-1.0, right.GetRawAxis(1)*-1.0);
+void DriveTrain::HandleDrive(Joystick& gamepad) {
+	InlineDrive.TankDrive(gamepad.GetRawAxis(2)*-1.0, gamepad.GetRawAxis(5)*-1.0);
 }
 
 void DriveTrain::Stop() {

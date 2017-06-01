@@ -20,7 +20,7 @@ private:
 public:
 	DriveTrain(MotorPin left, MotorPin right);
 	void InitDefaultCommand();
-	void HandleDrive(Joystick& left, Joystick& right);
+	void HandleDrive(Joystick& gamepad);
 	void Stop();
 	void SetDrive(double power, double curve);
 	void StraightDrive(double power);

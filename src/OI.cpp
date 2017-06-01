@@ -19,9 +19,10 @@
 #include <WPILib.h>
 
 OI::OI():
-left(0),
-right(1),
-mechanism(2),
+gamepad(0),
+left(1),
+right(2),
+mechanism(3),
 autoGearDrop(&left, 1),
 boilerDistance(&left, 2),
 boilerAngle(&right, 2),
@@ -59,6 +60,9 @@ retractGear(&mechanism, 4)
 
 	//turn90.WhenPressed(new TurnForAngle(0.5,90));
 }
+Joystick& OI::GetGamepad() {
+	return gamepad;
+}
 Joystick& OI::GetLeftStick() {
 	return left;
 }
@@ -68,3 +72,4 @@ Joystick& OI::GetRightStick() {
 Joystick& OI::GetMechanismStick() {
 	return mechanism;
 }
+

@@ -6,11 +6,14 @@
 class OI {
 public:
 	OI();
+	Joystick& GetGamepad();
 	Joystick& GetLeftStick();
 	Joystick& GetRightStick();
 	Joystick& GetMechanismStick();
 
+
 private:
+	Joystick gamepad;
 	Joystick left;
 	Joystick right;
 	Joystick mechanism;
