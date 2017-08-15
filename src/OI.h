@@ -31,6 +31,11 @@ private:
 	JoystickButton indexerOff;
 	JoystickButton extendGear;
 	JoystickButton retractGear;
+	JoystickButton driveStraightGamepad;
+	JoystickButton curveGamepad;
+	JoystickButton shootGamepad;
+	JoystickButton indexGamepad;
+	JoystickButton outdexGamepad;
 	//JoystickButton turn90;
 };
 

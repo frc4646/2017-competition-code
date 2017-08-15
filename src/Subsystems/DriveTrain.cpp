@@ -23,7 +23,11 @@ void DriveTrain::InitDefaultCommand() {
 }
 
 void DriveTrain::HandleDrive(Joystick& gamepad) {
-	InlineDrive.TankDrive(gamepad.GetRawAxis(2)*-1.0, gamepad.GetRawAxis(5)*-1.0);
+	if (gamepad.GetRawButton(2)) {
+		InlineDrive.TankDrive(gamepad.GetRawAxis(1)*-1.0, gamepad.GetRawAxis(5)*-1.0);
+	} else {
+		InlineDrive.TankDrive(gamepad.GetRawAxis(1)*-0.85, gamepad.GetRawAxis(5)*-0.85);
+	}
 }
 
 void DriveTrain::Stop() {
@@ -43,6 +47,17 @@ void DriveTrain::StraightDrive(double power) {
 	}
 	else {
 		SetDrive(robotPower, gyroCurve);
+	}
+}
+
+void DriveTrain::CurveGyro(double power, double curve) {
+	double gyroCurve = GetHeading()/90.0;
+	double robotPower = power;
+	if (robotPower > 0) {
+		SetDrive(robotPower, -(gyroCurve + curve));
+	}
+	else {
+		SetDrive(robotPower, gyroCurve + curve);
 	}
 }
 

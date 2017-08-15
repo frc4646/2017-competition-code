@@ -15,6 +15,8 @@
 #include "Commands/HoodCloseCommand.h"
 #include "Commands/DriveUntilCloseBack.h"
 #include "Commands/SpinUp.h"
+#include "Commands/DriveStraightGamepad.h"
+#include "Commands/GyroCurve.h"
 
 #include <WPILib.h>
 
@@ -30,13 +32,17 @@ driveStraight(&right, 1),
 hoodArc(&mechanism, 5),
 hoodKey(&mechanism, 3),
 shoot(&mechanism, 1),
-climb(&mechanism, 2),
 intakeOn(&mechanism, 9),
 intakeOff(&mechanism, 10),
 indexerOn(&mechanism, 7),
 indexerOff(&mechanism, 8),
-extendGear(&mechanism, 6),
-retractGear(&mechanism, 4)
+driveStraightGamepad(&gamepad, 1),
+extendGear(&gamepad, 2),
+retractGear(&gamepad, 3),
+shootGamepad(&gamepad, 4),
+indexGamepad(&gamepad, 5),
+outdexGamepad(&gamepad, 6),
+climb(&gamepad, 7)
 
 //turn90(&left, 2)
 {
@@ -53,10 +59,16 @@ retractGear(&mechanism, 4)
 	extendGear.WhileHeld(new GearExtendCommand());
 	retractGear.WhileHeld(new GearRetractCommand());
 //	shoot.WhileHeld(new ManualLaunchCommand(.78));
-	shoot.WhenPressed(new SpinUp(0.82));
+	shoot.WhenPressed(new ManualLaunchCommand(1));
 	shoot.WhenReleased(new ManualLaunchCommand(0));
 	hoodArc.WhenPressed(new HoodFarCommand());
 	hoodKey.WhenPressed(new HoodCloseCommand());
+	driveStraightGamepad.WhileHeld(new DriveStraightGamepad());
+	curveGamepad.WhileHeld(new GyroCurve());
+	shootGamepad.WhenPressed(new SpinUp(1));
+	shootGamepad.WhenReleased(new ManualLaunchCommand(0));
+	indexGamepad.WhileHeld(new Index(0.75));
+	outdexGamepad.WhileHeld(new Index(-0.75));
 
 	//turn90.WhenPressed(new TurnForAngle(0.5,90));
 }

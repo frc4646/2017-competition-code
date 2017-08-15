@@ -24,6 +24,7 @@ public:
 	void Stop();
 	void SetDrive(double power, double curve);
 	void StraightDrive(double power);
+	void CurveGyro(double power, double curve);
 	double GetHeading();
 	void ResetGyro();
 	void CalibrateGyro();
